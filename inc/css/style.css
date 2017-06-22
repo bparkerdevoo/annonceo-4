@@ -132,11 +132,27 @@ footer{
 	background: #c0c0c0;
 }
 /************************************FORMULAIRE**************/
-table{
+/* table{
 	border-collapse: collapse;
 }
 table tr td{
 		text-align: center;
+}
+td, th{
+	padding: 5px;
+} */
+
+/***********************TABLE*******************************/
+table{
+	border: solid 1px #ffab40;
+	
+}
+table tr td{
+		text-align: center;
+}
+th{
+	background: #000;
+	color: #fff;
 }
 td, th{
 	padding: 5px;
