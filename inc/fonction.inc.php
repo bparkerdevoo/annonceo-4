@@ -29,12 +29,13 @@ function debug($var,$mode = 1)
 function internauteEstConnecte() {
 
 	if (!isset($_SESSION['membre']))
-	{
+	 {
 		return false; // si internaute connecté !membre
 	}
-	else
-	{
-		return true;
+	 else
+	 {
+	 	return true;
+
 	}
 	
 }
@@ -42,13 +43,14 @@ function internauteEstConnecte() {
 function internauteConnecteEstAdmin()
 {
 	if (internauteEstConnecte() && $_SESSION['membre']['statut'] ==1)
-	{
-		return true;
-	}
+	 {
+	 	return true;
+	 }
 	else
 	{
-		return false;
-	}
+	 	return false;
+	 }
+
 
 }
 

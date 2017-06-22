@@ -4,11 +4,15 @@
 
 	require_once("../inc/haut.inc.php");
 
+
 	if(isset($_GET['action']) && $_GET['action'] == 'supprimer') {
 		$requestDelete = "DELETE FROM annonce WHERE id_annonce = ".$_GET['id'];
 		$pdo->query($requestDelete);
 		header("location:gestion_annonces.php");
 	}
+
+
+
 
 	$request = "SELECT * FROM annonce";
 
@@ -45,6 +49,6 @@
 
 	echo $content;
 
-	require_once("../inc/bas.inc.php");
+
 
 ?>
