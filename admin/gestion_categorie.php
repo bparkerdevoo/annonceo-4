@@ -17,14 +17,17 @@ if($_POST){
 }
 //-------affichage de la bdd categorie
 $request2 =$pdo->query("SELECT * FROM categorie");
-$content.="<table class='tableau' border='1' style='border-collapse=collapse';><tr>";
+$content.="<table class='tableau';><tr>";
 
 	for ($i=0; $i < $request2->columnCount(); $i++) { 
+
 		$colonne= $request2->getColumnMeta($i)['name'];
 
-		$content.="<td>". $colonne."</td>";
+		$content.="<th>". $colonne."</th>";
 	}
-	$content.="<th>Supprimer</th>";
+
+	$content.="<th>actions</th>";
+	$content.="</tr>";
 
 	while($categorie=$request2->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,17 +37,27 @@ $content.="<table class='tableau' border='1' style='border-collapse=collapse';><
 			$content.="<td>". $value . "</td>";
 		}
 
-		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\">supprimer</a></td>";
+		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img src='../inc/img/delete.png' width='20' height='20'></a><a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img width='20' height='20' src='../inc/img/edit.png'></a><a href=\"?action=detail&id_categorie=".$categorie['id_categorie']."\"><img width='20' height='20' src='../inc/img/loupe.png'></a></td>";
+
+
+
 		$content.="</tr>";
 	}
 
 	$content.="</table>";
 
-//------suppression
+//-----------requete de suppression
 if(isset($_GET['action']) && $_GET['action'] == 'supprimer'){
 	$pdo->query("DELETE FROM categorie WHERE id_categorie = '$_GET[id_categorie]'");
 
 }
+
+//----------requete de modification
+if(isset($_POST['action']) && $_GET['action'] == "modifier"){
+	$request3=$pdo->prepare("UPDATE categorie");
+	
+}
+
 
 require_once("../inc/haut.inc.php");
 echo $content;
@@ -65,3 +78,9 @@ echo $content;
 	
 
 </form>
+
+
+<?php
+
+require_once("../inc/bas.inc.php");
+?>

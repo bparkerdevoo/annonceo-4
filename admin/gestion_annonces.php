@@ -4,6 +4,8 @@
 
 	require_once("../inc/haut.inc.php");
 
+
+
 	$request = "SELECT * FROM annonce";
 
 	$result = $pdo->query($request);
@@ -31,6 +33,6 @@
 
 	echo $content;
 
-	require_once("../inc/bas.inc.php");
+
 
 ?>
