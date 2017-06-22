@@ -1,5 +1,10 @@
 <?php
 
+require_once('../inc/init.inc.php');
+require_once('../inc/haut.inc.php');
+
+
+
 	if($_POST) {
 
 		$request = "INSERT INTO membre (pseudo, mdp, nom, prenom, telephone, email, civilite, statut, date_enregistrement) VALUES (:pseudo, :mdp, :nom, :prenom, :telephone, :email, :civilite, 0, CURDATE())";
@@ -14,15 +19,7 @@
 
 	}
 
-
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
 
 	<form method="post">
 		<input type="text" name="pseudo" placeholder="Pseudo">
@@ -38,5 +35,6 @@
 		<input type="submit" value="Inscription">
 	</form>
 
-</body>
-</html>
+<?php
+require_once('../inc/bas.inc.php');
+?>
