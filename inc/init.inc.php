@@ -11,7 +11,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=annonceo','root','',array(PDO::ATTR_
 //--------------------- DEMARRAGE DE SESSION--------
 session_start();
 // chemin dossier
-define("RACINE_SITE", $_SERVER['DOCUMENT_ROOT']."/annonceo/");
+define("RACINE_SITE", $_SERVER['DOCUMENT_ROOT'].'/annonceo/');
 // chemin physique du site (avec tous les dossiers)
 define("URL", 'http://localhost/annonceo/');
 
@@ -26,4 +26,6 @@ $content = '';
 
 // inclusions des fonctions
 require_once('fonction.inc.php');
+
+
 ?>
