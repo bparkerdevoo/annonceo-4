@@ -2,6 +2,7 @@
 //On créé 1 fonction de débugage qui retourne une var_dump grace à la variable $var placer en argument
 
 
+
 function debug($var,$mode = 1)
 
 {
@@ -34,6 +35,7 @@ function internauteEstConnecte() {
 	 else
 	 {
 	 	return true;
+
 	}
 	
 }
@@ -48,6 +50,7 @@ function internauteConnecteEstAdmin()
 	{
 	 	return false;
 	 }
+
 
 }
 
