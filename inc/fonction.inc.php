@@ -27,27 +27,27 @@ function debug($var,$mode = 1)
 //---------------fonctions connection internaute----
 function internauteEstConnecte() {
 
-	if (!isset($_SESSION['membre']))
-	{
-		return false; // si internaute connecté !membre
-	}
-	else
-	{
-		return true;
-	}
-
+	// if (!isset($_SESSION['membre']))
+	// {
+	// 	return false; // si internaute connecté !membre
+	// }
+	// else
+	// {
+	// 	return true;
+	// }
+	//
 }
 //--------si internaute connecté = Admin----
 function internauteConnecteEstAdmin()
 {
-	if (internauteEstConnecte() && $_SESSION['membre']['statut'] ==1)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	// if (internauteConnecteEstAdmin() && $_SESSION['membre']['statut'] ==1)
+	// {
+	// 	return true;
+	// }
+	// else
+	// {
+	// 	return false;
+	// }
 
 }
 
