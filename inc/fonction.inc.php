@@ -1,7 +1,9 @@
 <?php
 //On créé 1 fonction de débugage qui retourne une var_dump grace à la variable $var placer en argument
 
-function debug($var,$mode)
+
+function debug($var,$mode = 1)
+
 {
 //la fonction debug_backtrace() renvoie le fichier dans lequel nous l'executons ainsi que le numero de la ligne	
 	$trace = debug_backtrace();
