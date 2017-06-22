@@ -1,7 +1,11 @@
 <?php
 //On créé 1 fonction de débugage qui retourne une var_dump grace à la variable $var placer en argument
 
+<<<<<<< HEAD
 function debug($var,$mode = 1)
+=======
+function debug($var,$mode=1)
+>>>>>>> master
 {
 //la fonction debug_backtrace() renvoie le fichier dans lequel nous l'executons ainsi que le numero de la ligne	
 	$trace = debug_backtrace();
