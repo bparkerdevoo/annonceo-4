@@ -1,26 +1,57 @@
 <?php
 
-	$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, pays, ville, adresse, cp, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :pays, :ville, :adresse, :cp, CURDATE())";
+	require_once("../inc/init.inc.php");
 
-	$prep = $pdo->prepare($request);
+	require_once("../inc/haut.inc.php");
 
-		foreach ($_POST as $key => $value) {
-			$prep->bindValue(':'.$key, $value, PDO::PARAM_STR);
+	if($_POST){
+
+		if($_FILES) {
+
+			foreach ($_FILES as $value) {
+				if(!empty($value['name'])) {
+
+					debug($value);
+
+					debug(RACINE_SITE."photos/".$value['name']);
+
+					$photo_dossier = RACINE_SITE."photos/".$value['name'];
+					copy($value['tmp_name'], $photo_dossier);
+				}
+			}
 		}
 
-	$prep->execute();
+		//debug($_POST);
 
+		//debug($_FILES);
+
+		//debug(RACINE_SITE."photos/");
+
+		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, pays, ville, adresse, cp, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :pays, :ville, :adresse, :cp, CURDATE())";
+
+		$prep = $pdo->prepare($request);
+
+			/*foreach ($_POST as $key => $value) {
+				$prep->bindValue(':'.$key, $value, PDO::PARAM_STR);
+			}*/
+
+		$prep->bindValue(":titre", $_POST["titre"]);
+		$prep->bindValue(":description_courte", $_POST["description_courte"]);
+		$prep->bindValue(":description_longue", $_POST["description_longue"]);
+		$prep->bindValue(":prix", $_POST["prix"]);
+		$prep->bindValue(":pays", $_POST["pays"]);
+		$prep->bindValue(":ville", $_POST["ville"]);
+		$prep->bindValue(":adresse", $_POST["adresse"]);
+		$prep->bindValue(":cp", $_POST["cp"]);
+
+		$prep->execute();
+
+	}
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
 
-	<form method="post">
+	<form method="post" enctype="multipart/form-data">
 		<input type="text" name="titre" placeholder="Titre">
 		<input type="text" name="description_courte" placeholder="Description courte">
 		<input type="text" name="description_longue" placeholder="Description longue">
@@ -38,5 +69,10 @@
 		<input type="submit" value="Ajouter l'annonce">
 	</form>
 
-</body>
-</html>
+	<?php
+
+	require_once("../inc/bas.inc.php");
+
+	?>
+
+
