@@ -1,17 +1,10 @@
 <?php
 //On créé 1 fonction de débugage qui retourne une var_dump grace à la variable $var placer en argument
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-function debug($var,$mode = 1)
-=======
-function debug($var,$mode=1)
->>>>>>> master
-=======
+
 
 function debug($var,$mode = 1)
 
->>>>>>> 1e060dd233df4a0df51af9ca95374b74d75844cc
 {
 //la fonction debug_backtrace() renvoie le fichier dans lequel nous l'executons ainsi que le numero de la ligne	
 	$trace = debug_backtrace();
@@ -35,27 +28,27 @@ function debug($var,$mode = 1)
 //---------------fonctions connection internaute----
 function internauteEstConnecte() {
 
-	// if (!isset($_SESSION['membre']))
-	// {
-	// 	return false; // si internaute connecté !membre
-	// }
-	// else
-	// {
-	// 	return true;
-	// }
-	//
+	if (!isset($_SESSION['membre']))
+	{
+		return false; // si internaute connecté !membre
+	}
+	else
+	{
+		return true;
+	}
+	
 }
 //--------si internaute connecté = Admin----
 function internauteConnecteEstAdmin()
 {
-	// if (internauteConnecteEstAdmin() && $_SESSION['membre']['statut'] ==1)
-	// {
-	// 	return true;
-	// }
-	// else
-	// {
-	// 	return false;
-	// }
+	if (internauteEstConnecte() && $_SESSION['membre']['statut'] ==1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 
 }
 
