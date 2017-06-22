@@ -4,6 +4,16 @@
 
 	require_once("../inc/haut.inc.php");
 
+
+	if(isset($_GET['action']) && $_GET['action'] == 'supprimer') {
+		$requestDelete = "DELETE FROM annonce WHERE id_annonce = ".$_GET['id'];
+		$pdo->query($requestDelete);
+		header("location:gestion_annonces.php");
+	}
+
+
+
+
 	$request = "SELECT * FROM annonce";
 
 	$result = $pdo->query($request);
@@ -13,6 +23,8 @@
 	for ($i=0; $i < $result->columnCount(); $i++) { 
 		$content.= "<th>".$result->getColumnMeta($i)['name']."</th>";
 	}
+
+	$content.= "<th>Actions</th>";
 
 	$content.= "</tr>";
 
@@ -24,13 +36,19 @@
 			$content.= "<td>".$value."</td>";
 		}
 
-		$content.= "</tr>";
+		$content.= "<td>";
+
+		$content.= "<a href='?action=modifier&id=".$infos['id_annonce']."'>Modifier</a>";
+
+		$content.= "<a href='?action=supprimer&id=".$infos['id_annonce']."'>Supprimer</a>";
+
+		$content.= "</td></tr>";
 	}
 
 	$content.= "</table>";
 
 	echo $content;
 
-	require_once("../inc/bas.inc.php");
+
 
 ?>

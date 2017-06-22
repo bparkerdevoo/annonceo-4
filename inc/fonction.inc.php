@@ -2,6 +2,7 @@
 //On créé 1 fonction de débugage qui retourne une var_dump grace à la variable $var placer en argument
 
 
+
 function debug($var,$mode = 1)
 
 {
@@ -28,12 +29,14 @@ function debug($var,$mode = 1)
 function internauteEstConnecte() {
 
 	if (!isset($_SESSION['membre']))
-	{
+	 {
 		return false; // si internaute connecté !membre
 	}
-	else
-	{
+	 else
+	 {
 	 	return true;
+
+
 	}
 	
 }
@@ -41,13 +44,14 @@ function internauteEstConnecte() {
 function internauteConnecteEstAdmin()
 {
 	if (internauteEstConnecte() && $_SESSION['membre']['statut'] ==1)
-	{
+	 {
 	 	return true;
-	}
+	 }
 	else
 	{
 	 	return false;
-	}
+	 }
+
 
 }
 
