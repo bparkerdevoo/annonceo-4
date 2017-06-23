@@ -38,7 +38,7 @@
 
 		//debug($urlPhotosSecondaires);
 
-		$idPhotosSecondaires;
+		$idPhotosSecondaires = "";
 
 		if(!empty($urlPhotosSecondaires)) {
 
