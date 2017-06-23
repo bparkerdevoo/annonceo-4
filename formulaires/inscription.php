@@ -4,7 +4,6 @@
 	require_once("../inc/haut.inc.php");
 
 
-
 	if($_POST) {
 
 
