@@ -59,6 +59,7 @@ header nav{
 	display: inline-block; */
 	/*float: right;*/
 	line-height: 60px;
+	margin:0;
 	/*height: 60px;*/
 	padding:10px;
 
@@ -77,6 +78,10 @@ header ul li{
 	text-align: center;
 }
 
+header ul li:nth-child(2){
+	border:none;
+}
+
 
 header nav a{
 	color: #fff;
@@ -92,6 +97,7 @@ header nav a:hover{
 	width:40px; 
 	height:40px;
 	display: block;
+
 }
 /*******************************MILIEU************************/
 section{
