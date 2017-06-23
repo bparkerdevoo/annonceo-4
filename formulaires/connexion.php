@@ -1,8 +1,13 @@
 <?php
 
+require_once("../inc/init.inc.php");
+
+require_once("../inc/haut.inc.php");
+
 if($_POST) {
 
-	$request = "SELECT * FROM membre WHERE pseudo = ".$_POST['pseudo'];
+	$request = "SELECT * FROM membre WHERE pseudo = '$_POST[pseudo]'";
+
 	$result = $pdo->query($request);
 
 	if($result->rowCount() >= 1) {
@@ -12,30 +17,40 @@ if($_POST) {
 		if(password_verify($_POST['mdp'], $membre['mdp']) || $_POST['mdp'] === $membre['mdp']) {
 			//Connexion
 			//$_SESSION['membre']
+
+			foreach ($membre as $key => $value) {
+				$_SESSION['membre'][$key] = $value;
+			}
+
+			$content .= "Connexion réussie";
+
 		}
 
-		else echo "erreur de mot de passe";
+		else $content .= "Erreur de mot de passe";
 
 	}
 
-	else echo "erreur de pseudo";
+	else $content .= "Erreur de pseudo";
+
+
 
 }
 
+
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
 
-	<form method="post">
-		<input type="text" name="pseudo" placeholder="Pseudo">
-		<input type="password" name="mdp" placeholder="Mot de passe">
-		<input type="submit" value="Connexion">
-	</form>
 
-</body>
-</html>
+<form method="post">
+	<input type="text" name="pseudo" placeholder="Pseudo">
+	<input type="password" name="mdp" placeholder="Mot de passe">
+	<input type="submit" value="Connexion">
+</form>
+
+<?php
+
+echo $content;
+
+require_once("../inc/bas.inc.php");
+
+?>
