@@ -4,6 +4,14 @@
 
 	require_once("../inc/haut.inc.php");
 
+	//debug($_SESSION);
+
+	$requestCategories = "SELECT * FROM categorie";
+	$resultCategories = $pdo->query($requestCategories);
+
+	$infoscategories = $resultCategories->fetchAll(PDO::FETCH_ASSOC);
+
+	//debug($infoscategories);
 
 	if($_POST){
 
@@ -15,7 +23,7 @@
 			foreach ($_FILES as $key => $value) {
 				if(!empty($value['name'])) {
 
-					//debug($_FILES);
+					
 
 					if($key == "photoPrincipale") {
 
@@ -31,14 +39,21 @@
 
 
 					$photo_dossier = RACINE_SITE.$photoName;
-					copy($value['tmp_name'], $photo_dossier);
+					//copy($value['tmp_name'], $photo_dossier);
 				}
 			}
+
 		}
+
+		/*for ($i=0; $i < 5; $i++) { 
+			if(!isset($urlPhotosSecondaires[$i])) {
+				$urlPhotosSecondaires[$i] = "";
+			}
+		}*/
 
 		//debug($urlPhotosSecondaires);
 
-		$idPhotosSecondaires;
+		$idPhotosSecondaires = "";
 
 		if(!empty($urlPhotosSecondaires)) {
 
@@ -51,13 +66,13 @@
 			$prepInsertPhotos->bindValue(":photo4", $urlPhotosSecondaires[3], PDO::PARAM_STR);
 			$prepInsertPhotos->bindValue(":photo5", $urlPhotosSecondaires[4], PDO::PARAM_STR);
 
-			$prepInsertPhotos->execute();
+			//$prepInsertPhotos->execute();
 
-			$idPhotosSecondaires = $pdo->lastInsertId();
+			//$idPhotosSecondaires = $pdo->lastInsertId();
 		}
 
 
-		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, photo, pays, ville, adresse, cp, id_photo, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :urlPhotoPrincipale, :pays, :ville, :adresse, :cp, :id_photo, CURDATE())";
+		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, photo, pays, ville, adresse, cp, id_categorie, id_membre, id_photo, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :urlPhotoPrincipale, :pays, :ville, :adresse, :cp, :id_categorie, :id_membre, :id_photo, NOW())";
 
 		$prep = $pdo->prepare($request);
 
@@ -70,9 +85,12 @@
 		$prep->bindValue(":ville", $_POST["ville"], PDO::PARAM_STR);
 		$prep->bindValue(":adresse", $_POST["adresse"], PDO::PARAM_STR);
 		$prep->bindValue(":cp", $_POST["cp"], PDO::PARAM_STR);
+		$prep->bindValue(":id_categorie", $_POST["categorie"], PDO::PARAM_STR);
+		$prep->bindValue(":id_membre", $_SESSION["membre"]["id_membre"], PDO::PARAM_STR);
 		$prep->bindValue(":id_photo", $idPhotosSecondaires, PDO::PARAM_STR);
 
-		$prep->execute();
+		
+		//$prep->execute();
 
 	}
 
@@ -84,8 +102,13 @@
 		<input type="text" name="description_courte" placeholder="Description courte">
 		<input type="text" name="description_longue" placeholder="Description longue">
 		<input type="number" name="prix" placeholder="Prix">
-		<select name="categorie"></select>
-
+		<select name="categorie">
+		<?php
+			for ($i=0; $i < count($infoscategories); $i++) { 
+				echo "<option value='".strtolower($infoscategories[$i]['id_categorie'])."'>".ucfirst(strtolower($infoscategories[$i]['titre']))."</option>";
+			}
+		?>
+		</select>
 		<label for="photoPrincipale">Photo principale</label>
 		<input type="file" name="photoPrincipale" id="photoPrincipale">
 		<label for="photo1">Photo 1</label>
