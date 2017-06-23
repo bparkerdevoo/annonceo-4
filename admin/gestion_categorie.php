@@ -3,7 +3,7 @@ require_once("../inc/init.inc.php");
 require_once("../inc/fonction.inc.php");
 //--------envoi des donner dans bdd categorie
 
-debug($_POST);
+//debug($_POST);
 
 if($_POST && empty($_GET)){
 	$request = $pdo->prepare("INSERT INTO categorie(titre,motscles)VALUES(:titre,:motscles)");
@@ -13,7 +13,7 @@ if($_POST && empty($_GET)){
 
 	$result = $request->execute();
 
-	debug($_POST);
+	//debug($_POST);
 
 	$content.="<div class='validation'>Envoi validé</div>";
 
@@ -40,11 +40,11 @@ $content.="<table class='tableau';><tr>";
 			$content.="<td>". $value . "</td>";
 		}
 
-		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img src='../inc/img/delete.png' width='20' height='20'></a>";
+		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/delete.png'></a>";
 
-		$content.="<a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img width='20' height='20' src='../inc/img/edit.png'></a>";
+		$content.="<a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img class='gestion'  src='../inc/img/edit.png'></a>";
 			
-		$content.="<a href=\"?action=detail&id_categorie=".$categorie['id_categorie']."\"><img width='20' height='20' src='../inc/img/loupe.png'></a></td>";
+		$content.="<a href=\"?action=detail&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/loupe.png'></a></td>";
 
 
 

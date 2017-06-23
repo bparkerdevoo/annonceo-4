@@ -24,6 +24,7 @@ input[type="file"]{
 h1, label{
 	color: blue;
 }
+
 /*********************************HAUT*****************/
 header{
 	background: #000;
@@ -113,7 +114,7 @@ footer{
 	text-align: center;
 }
 /*******************************BOUTIQUE*********************/
-.boutique-gauche{
+/* .boutique-gauche{
 	float: left;
 	width: 30%;
 	background: #f2f2f2;
@@ -147,7 +148,7 @@ footer{
 }
 .boutique-produit:hover{
 	background: #c0c0c0;
-}
+} */
 /************************************FORMULAIRE**************/
 
 
@@ -167,4 +168,10 @@ th{
 }
 td, th{
 	padding: 5px;
+}
+/*---------------css images tableaux gestion--------------------------*/
+.gestion{
+	width:20px; 
+	height:20px;
+	padding-left: 5px;
 }

@@ -38,9 +38,9 @@
 
 		$content.= "<td>";
 
-		$content.= "<a href='?action=modifier&id=".$infos['id_annonce']."'>Modifier</a>";
+		$content.= "<a href='?action=modifier&id=".$infos['id_annonce']."'><img class='gestion' src='../inc/img/edit.png'></a>";
 
-		$content.= "<a href='?action=supprimer&id=".$infos['id_annonce']."'>Supprimer</a>";
+		$content.= "<a href='?action=supprimer&id=".$infos['id_annonce']."'><img class='gestion' src='../inc/img/delete.png'></a>";
 
 		$content.= "</td></tr>";
 	}
