@@ -24,7 +24,7 @@ while ($ligne = $req->fetch(PDO::FETCH_ASSOC))
 		{
 			$content .="<td>".$valeurs."</td>";
 		}
-			$content .="<td><a href='#'><img src='/inc/img/loupe.png'></a><a href='#'<img class='gestion' src='/inc/img/edit.png'></a><a href='#'><img class='gestion' src='/inc/img/delete.png'></a></td>";
+			$content .="<td><a href='#'><img src='../inc/img/loupe.jpg'></a><a href='#'><img class='gestion' src='../inc/img/edit.png'></a><a href='#'><img class='gestion' src='../inc/img/delete.png'></a></td>";
 
 	$content .="</tr>";
 }
@@ -33,8 +33,45 @@ $content .= "</table>";
 echo $content;
 
 
-/***********REQUETE INJECTION DONNEES DANS SQL*****/
-//$data = $pdo->query
+/***********REQUETE MODIFICATION BDD MEMBRE*****/
+if (isset($_GET['action']) && $_GET['action'] == 'suppression')
+{
+	$reqdelete = $pdo->query("DELETE FROM membre WHERE id_membre = $_GET[id_membre]");
+	header("location:gestion_membre.php");
+}
+
+if (isset($_GET['action']) && $_GET['action'] == "modification")
+{
+		$content .= "<form method='post' enctype='multipart/form-date'>";
+		$content .= "<input name='pseudo'>";
+		$content .= "<input name='mdp'>";
+		$content .= "<input name='nom'>";
+		$content .= "<input name='prenom'>";
+		$content .= "<input name='email'>";
+		$content .= "<input name='telephone'>";
+		$content .= "<input name='statut'>";
+		$content .= "<button value='enregistrer'>";
+
+		if ($_POST)
+		{
+			$reqedit = ("UPDATE membre SET pseudo= :pseudo, mdp= :mdp, nom = :nom, prenom= :prenom, email= :email, telephone= :telephone, statut= :statut");
+
+			$prep= $pdo->prepare($reqedit);
+
+			$prep->bindValue(':pseudo',$_POST['pseudo'], PDO::PARAM_STR);
+			$prep->bindValue(':mdp',$_POST['mdp'], PDO::PARAM_STR);
+			$prep->bindValue(':nom',$_POST['nom'], PDO::PARAM_STR);
+			$prep->bindValue(':prenom',$_POST['prenom'], PDO::PARAM_STR);
+			$prep->bindValue(':email',$_POST['email'], PDO::PARAM_STR);
+			$prep->bindValue(':telephone',$_POST['telephone'], PDO::PARAM_STR);
+			$prep->bindValue(':statut',$_POST['statut'], PDO::PARAM_STR);
+
+			$prep= $pdo->execute($reqedit);
+
+			header("location:gestion_membre.php");
+		}
+}
+
 
 
 ?>
