@@ -2,7 +2,10 @@
 require_once("../inc/init.inc.php");
 require_once("../inc/fonction.inc.php");
 //--------envoi des donner dans bdd categorie
-if($_POST){
+
+//debug($_POST);
+
+if($_POST && empty($_GET)){
 	$request = $pdo->prepare("INSERT INTO categorie(titre,motscles)VALUES(:titre,:motscles)");
 
 	$request->bindValue(':titre',$_POST['titre'], PDO::PARAM_STR);
@@ -10,7 +13,7 @@ if($_POST){
 
 	$result = $request->execute();
 
-	debug($_POST);
+	//debug($_POST);
 
 	$content.="<div class='validation'>Envoi validé</div>";
 
@@ -37,7 +40,11 @@ $content.="<table class='tableau';><tr>";
 			$content.="<td>". $value . "</td>";
 		}
 
-		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img src='../inc/img/delete.png' width='20' height='20'></a><a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img width='20' height='20' src='../inc/img/edit.png'></a><a href=\"?action=detail&id_categorie=".$categorie['id_categorie']."\"><img width='20' height='20' src='../inc/img/loupe.png'></a></td>";
+		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/delete.png'></a>";
+
+		$content.="<a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img class='gestion'  src='../inc/img/edit.png'></a>";
+			
+		$content.="<a href=\"?action=detail&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/loupe.png'></a></td>";
 
 
 
@@ -49,12 +56,29 @@ $content.="<table class='tableau';><tr>";
 //-----------requete de suppression
 if(isset($_GET['action']) && $_GET['action'] == 'supprimer'){
 	$pdo->query("DELETE FROM categorie WHERE id_categorie = '$_GET[id_categorie]'");
+	header("location:../admin/gestion_categorie.php");
+
+
 
 }
 
+
 //----------requete de modification
-if(isset($_POST['action']) && $_GET['action'] == "modifier"){
-	$request3=$pdo->prepare("UPDATE categorie");
+if(isset($_GET['action']) && $_GET['action'] == "modifier"){
+
+	if($_POST){
+
+		$request3=$pdo->prepare("UPDATE categorie SET titre = :titre, motscles = :motscles WHERE id_categorie = '$_GET[id_categorie]'");
+
+		$request3->bindValue(':titre',$_POST['titre'], PDO::PARAM_STR);
+
+		$request3->bindValue(':motscles',$_POST['motscles'], PDO::PARAM_STR);
+
+		$request3->execute();
+
+
+		header("location:../admin/gestion_categorie.php");
+	}
 	
 }
 
