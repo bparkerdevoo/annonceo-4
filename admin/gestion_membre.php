@@ -34,11 +34,11 @@ echo $content;
 
 
 /***********REQUETE MODIFICATION BDD MEMBRE*****/
-/*if (isset($_GET['action']) && $_GET['action'] == suppression)
+if (isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
-	$reqdelete = $pdo->query("DELETE membre FROM annonceo WHERE id_membre = $_GET['id_membre']");
+	$reqdelete = $pdo->query("DELETE FROM membre WHERE id_membre = $_GET[id_membre]");
 	header("location:gestion_membre.php");
-}*/
+}
 
 if (isset($_GET['action']) && $_GET['action'] == "modification")
 {
