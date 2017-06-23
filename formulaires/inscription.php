@@ -3,9 +3,6 @@
 
 	require_once("../inc/haut.inc.php");
 
-require_once('../inc/init.inc.php');
-require_once('../inc/haut.inc.php');
-
 
 
 	if($_POST) {
@@ -19,7 +16,7 @@ require_once('../inc/haut.inc.php');
 			$prep->bindValue(':'.$key, $value, PDO::PARAM_STR);
 		}
 
-		//$prep->execute();
+		$prep->execute();
 
 	}
 

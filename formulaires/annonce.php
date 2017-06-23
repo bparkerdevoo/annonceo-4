@@ -35,14 +35,14 @@
 				$prep->bindValue(':'.$key, $value, PDO::PARAM_STR);
 			}*/
 
-		$prep->bindValue(":titre", $_POST["titre"]);
-		$prep->bindValue(":description_courte", $_POST["description_courte"]);
-		$prep->bindValue(":description_longue", $_POST["description_longue"]);
-		$prep->bindValue(":prix", $_POST["prix"]);
-		$prep->bindValue(":pays", $_POST["pays"]);
-		$prep->bindValue(":ville", $_POST["ville"]);
-		$prep->bindValue(":adresse", $_POST["adresse"]);
-		$prep->bindValue(":cp", $_POST["cp"]);
+		$prep->bindValue(":titre", $_POST["titre"], PDO::PARAM_STR);
+		$prep->bindValue(":description_courte", $_POST["description_courte"], PDO::PARAM_STR);
+		$prep->bindValue(":description_longue", $_POST["description_longue"], PDO::PARAM_STR);
+		$prep->bindValue(":prix", $_POST["prix"], PDO::PARAM_STR);
+		$prep->bindValue(":pays", $_POST["pays"], PDO::PARAM_STR);
+		$prep->bindValue(":ville", $_POST["ville"], PDO::PARAM_STR);
+		$prep->bindValue(":adresse", $_POST["adresse"], PDO::PARAM_STR);
+		$prep->bindValue(":cp", $_POST["cp"], PDO::PARAM_STR);
 
 		$prep->execute();
 
