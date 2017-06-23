@@ -16,24 +16,28 @@
 				<?php
 				
 
-				if(internauteConnecteEstAdmin())
-				{  // BackOffice
-						echo '<a href="#">Déposer annonce</a>';
-						echo '<a href="#">Boutique</a>';
-						echo '<a href="#">Espace membre</a>';
-				}
+				/*if(internauteConnecteEstAdmin())
+				{ */ // BackOffice
+						echo '<a href="../admin/gestion_categorie.php">Gestion categories</a>';
+						echo '<a href="../admin/gestion_annonces.php">Gestion annonces</a>';
+						echo '<a href="../admin/gestion_membre.php">Gestion membres</a>';
+						echo'<a href="#">Gestion des notes</a>';
+						echo '<a href="#">Gestion des commentaires</a>';
+						echo '<a href="#">Statistique</a>';
+				//}
 				if(internauteEstConnecte())
 				{
-						echo '<a href="#">Voir votre profil</a>';
-						echo '<a href="#">Accès à la boutique</a>';
-						echo '<a href="#">Se déconnecter</a>';
+						echo '<a href="#">Votre profil</a>';
+						echo '<a href="formulaires/annonce.php">Ajouter une annonce</a>';
+						echo '<a href="#">Déconnection</a>';
 
 				}
 				else // visiteur
 				{
-						echo '<a href="#">Inscription</a>';
-						echo '<a href="#">Accès à la boutique</a>';
-						echo '<a href="#">Connexion</a>';
+						echo '<a href="../formulaires/inscription.php">Inscription</a>';
+						echo '<a href="../formulaires/connexion.php">Connexion</a>';
+						echo '<a href="#">Espace membre</a>';
+						echo '<a href="#">Accueil</a>';
 
 				}
 
