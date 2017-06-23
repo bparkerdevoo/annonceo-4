@@ -86,7 +86,5 @@
 	}
 
 	echo $content;
-
-
-
 ?>
+

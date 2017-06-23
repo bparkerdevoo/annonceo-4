@@ -202,8 +202,29 @@ footer{
 .boutique-produit:hover{
 	background: #c0c0c0;
 } */
-/************************************FORMULAIRE**************/
+/************************************FICHIER NOTES**************/
+ul.notes-echelle{
+	margin: 0;
+	padding: 0;
+	font:.75e/1.2 Arial, Helvetica, sans-serif;
+}
+ul.notes-echelle li{
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	min-width: 20px;
+	max-height: 20px;
+}
+/* Correctif IE6 sur min-width & min-height*/
 
+ul.notes-echelle li label{
+	display: block;
+	text-align: center;
+	line-height: 20px;
+	background: url(etoiles.gif) center top no repeat;
+	cursor: pointer;
+}
 
 
 
