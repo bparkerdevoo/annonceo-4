@@ -61,9 +61,15 @@
 
 		$content.= "<th>Actions</th>";
 
+
+		$content.= "<a href='?action=modifier&id=".$infos['id_annonce']."'><img class='gestion' src='../inc/img/edit.png'></a>";
+
+		$content.= "<a href='?action=supprimer&id=".$infos['id_annonce']."'><img class='gestion' src='../inc/img/delete.png'></a>";
+
 		$content.= "</tr>";
 
 		while($infos = $result->fetch(PDO::FETCH_ASSOC)) {
+
 
 			$content.= "<tr>";
 

@@ -24,7 +24,7 @@ while ($ligne = $req->fetch(PDO::FETCH_ASSOC))
 		{
 			$content .="<td>".$valeurs."</td>";
 		}
-			$content .="<td><a href='#'><img src='/inc/img/loupe.png'></a><a href='#'<img src='/inc/img/edit.png'></a><a href='#'><img src='/inc/img/delete.png'></a></td>";
+			$content .="<td><a href='#'><img src='/inc/img/loupe.png'></a><a href='#'<img class='gestion' src='/inc/img/edit.png'></a><a href='#'><img class='gestion' src='/inc/img/delete.png'></a></td>";
 
 	$content .="</tr>";
 }
