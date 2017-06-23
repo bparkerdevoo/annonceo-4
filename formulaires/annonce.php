@@ -4,6 +4,7 @@
 
 	require_once("../inc/haut.inc.php");
 
+
 	if($_POST){
 
 		if($_FILES) {
@@ -12,31 +13,24 @@
 				if(!empty($value['name'])) {
 
 
-					$urlPhoto = URL."photos/".$value['name'].$value['id_annonce'];
+					$photoName = "photos/".date("U").$value['name'];
 
-					//debug($urlPhoto);
+					echo $photoName;
 
-					$photo_dossier = RACINE_SITE."photos/".$value['name'].$value['id_annonce'];
+
+					$urlPhoto = URL.$photoName;
+
+
+					$photo_dossier = RACINE_SITE.$photoName;
 					copy($value['tmp_name'], $photo_dossier);
 				}
 			}
 		}
 
-		//debug($_POST);
-
-		//debug($_FILES);
-
-		//debug(RACINE_SITE."photos/");
 
 		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, photo, pays, ville, adresse, cp, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :urlPhoto, :pays, :ville, :adresse, :cp, CURDATE())";
 
-		debug($request);
-
 		$prep = $pdo->prepare($request);
-
-			/*foreach ($_POST as $key => $value) {
-				$prep->bindValue(':'.$key, $value, PDO::PARAM_STR);
-			}*/
 
 		$prep->bindValue(":titre", $_POST["titre"], PDO::PARAM_STR);
 		$prep->bindValue(":description_courte", $_POST["description_courte"], PDO::PARAM_STR);
