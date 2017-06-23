@@ -12,11 +12,11 @@
 				if(!empty($value['name'])) {
 
 
-					$urlPhoto = URL."photos/".$value['name'];
+					$urlPhoto = URL."photos/".$value['name'].$value['id_annonce'];
 
 					//debug($urlPhoto);
 
-					$photo_dossier = RACINE_SITE."photos/".$value['name'];
+					$photo_dossier = RACINE_SITE."photos/".$value['name'].$value['id_annonce'];
 					copy($value['tmp_name'], $photo_dossier);
 				}
 			}
