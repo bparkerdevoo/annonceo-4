@@ -11,11 +11,12 @@
 			foreach ($_FILES as $value) {
 				if(!empty($value['name'])) {
 
-					debug($value);
 
-					debug(RACINE_SITE."photos/".$value['name']);
+					$urlPhoto = URL."photos/".$value['name'].$value['id_annonce'];
 
-					$photo_dossier = RACINE_SITE."photos/".$value['name'];
+					//debug($urlPhoto);
+
+					$photo_dossier = RACINE_SITE."photos/".$value['name'].$value['id_annonce'];
 					copy($value['tmp_name'], $photo_dossier);
 				}
 			}
@@ -27,7 +28,9 @@
 
 		//debug(RACINE_SITE."photos/");
 
-		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, pays, ville, adresse, cp, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :pays, :ville, :adresse, :cp, CURDATE())";
+		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, photo, pays, ville, adresse, cp, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :urlPhoto, :pays, :ville, :adresse, :cp, CURDATE())";
+
+		debug($request);
 
 		$prep = $pdo->prepare($request);
 
@@ -39,6 +42,7 @@
 		$prep->bindValue(":description_courte", $_POST["description_courte"], PDO::PARAM_STR);
 		$prep->bindValue(":description_longue", $_POST["description_longue"], PDO::PARAM_STR);
 		$prep->bindValue(":prix", $_POST["prix"], PDO::PARAM_STR);
+		$prep->bindValue(":urlPhoto", $urlPhoto, PDO::PARAM_STR);
 		$prep->bindValue(":pays", $_POST["pays"], PDO::PARAM_STR);
 		$prep->bindValue(":ville", $_POST["ville"], PDO::PARAM_STR);
 		$prep->bindValue(":adresse", $_POST["adresse"], PDO::PARAM_STR);
