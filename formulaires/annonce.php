@@ -39,7 +39,7 @@
 
 
 					$photo_dossier = RACINE_SITE.$photoName;
-					//copy($value['tmp_name'], $photo_dossier);
+					copy($value['tmp_name'], $photo_dossier);
 				}
 			}
 
@@ -66,9 +66,9 @@
 			$prepInsertPhotos->bindValue(":photo4", $urlPhotosSecondaires[3], PDO::PARAM_STR);
 			$prepInsertPhotos->bindValue(":photo5", $urlPhotosSecondaires[4], PDO::PARAM_STR);
 
-			//$prepInsertPhotos->execute();
+			$prepInsertPhotos->execute();
 
-			//$idPhotosSecondaires = $pdo->lastInsertId();
+			$idPhotosSecondaires = $pdo->lastInsertId();
 		}
 
 
@@ -90,7 +90,7 @@
 		$prep->bindValue(":id_photo", $idPhotosSecondaires, PDO::PARAM_STR);
 
 		
-		//$prep->execute();
+		$prep->execute();
 
 	}
 
