@@ -19,7 +19,7 @@
 						echo '<li><a href="'. URL .'admin/gestion_annonces.php">Gestion annonces</a></li>';
 						echo '<li><a href="'. URL .'admin/gestion_membre.php">Gestion membres</a></li>';
 						echo'<li><a href="#">Gestion notes</a></li>';
-						echo '<li><a href="#">Gestion commentaires</a></li>';
+						echo '<li><a href="'. URL .'admin/gestion_commentaire.php">Gestion commentaires</a></li>';
 						echo '<li><a href="#">Statistique</a></li>';
 				//}
 				if(internauteEstConnecte())
