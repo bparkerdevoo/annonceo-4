@@ -28,7 +28,7 @@ while ($ligne = $req->fetch(PDO::FETCH_ASSOC))
 
 			$content .="<a href=\"?action=modification&id_membre=".$ligne['id_membre']."\"><img class='gestion' src='../inc/img/edit.png'></a>";
 
-			$content .="<a href=\"?action=suppression&id_membre=".$ligne['id_membre']."\" OnClick='return(confirm(\"En êtes-vous certain ?\"));'><img class='gestion' src='../inc/img/delete.png'></a></td>";
+			$content .="<a href=\"?action=suppression&id_membre=".$ligne['id_membre']."\" OnClick='return(confirm(\"En êtes-vous sûr ?\"));'><img class='gestion' src='../inc/img/delete.png'></a></td>";
 
 	$content .="</tr>";
 }
