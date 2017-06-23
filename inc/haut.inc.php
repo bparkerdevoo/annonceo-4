@@ -8,12 +8,10 @@
 	
 	<header>
 		<div class="conteneur">
-			<span>
-				<a href="#">Annonceo</a>
-			</span>	
-			
+			<a href="#" id="logo">Annon<span color:#ffab40>ceo</span></a>
 			<nav>
 				<?php
+				echo "<ul>";
 				
 
 				/*if(internauteConnecteEstAdmin())
@@ -34,13 +32,15 @@
 				}
 				else // visiteur
 				{
+
 						echo '<a href="../formulaires/inscription.php">Inscription</a>';
 						echo '<a href="../formulaires/connexion.php">Connexion</a>';
 						echo '<a href="#">Espace membre</a>';
 						echo '<a href="#">Accueil</a>';
 
-				}
 
+				}
+				echo "</ul>";
 	
 				
 				?>
