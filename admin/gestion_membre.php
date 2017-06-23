@@ -1,8 +1,8 @@
 <?php
-require_once('/inc/init.inc.php');
+require_once('../inc/init.inc.php');
 
 
-require_once('/inc/haut.inc.php');
+require_once('../inc/haut.inc.php');
 
 $req = $pdo->query("SELECT *FROM membre");
 
@@ -33,8 +33,18 @@ $content .= "</table>";
 echo $content;
 
 
-/***********REQUETE INJECTION DONNEES DANS SQL*****/
-//$data = $pdo->query
+/***********REQUETE MODIFICATION BDD MEMBRE*****/
+if (isset($_GET['action']) && $_GET['action'] == suppression)
+{
+	$reqdelete = $pdo->query("DELETE membre FROM annonceo WHERE id_membre = $_GET['id_membre']");
+	header("location:gestion_membre.php");
+}
+
+if (isset($_GET['action']) && $_GET['action'] == modification)
+{
+	
+}
+
 
 
 ?>
@@ -77,6 +87,6 @@ echo $content;
 
 <?php 
 
-require_once('/inc/bas.inc.php');
+require_once('../inc/bas.inc.php');
 
 ?>
