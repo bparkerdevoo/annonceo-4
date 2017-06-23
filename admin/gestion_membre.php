@@ -24,7 +24,11 @@ while ($ligne = $req->fetch(PDO::FETCH_ASSOC))
 		{
 			$content .="<td>".$valeurs."</td>";
 		}
-			$content .="<td><a href='#'><img src='../inc/img/loupe.jpg'></a><a href='#'><img class='gestion' src='../inc/img/edit.png'></a><a href='#'><img class='gestion' src='../inc/img/delete.png'></a></td>";
+			$content .="<td><a href='#'><img src='../inc/img/loupe.jpg'></a>";
+
+			$content .="<a href=\"?action=modification&id_membre=".$ligne['id_membre']."\"><img class='gestion' src='../inc/img/edit.png'></a>";
+
+			$content .="<a href=\"?action=suppression&id_membre=".$ligne['id_membre']."\" OnClick='return(confirm(\"En êtes-vous certain ?\"));'><img class='gestion' src='../inc/img/delete.png'></a></td>";
 
 	$content .="</tr>";
 }
@@ -42,7 +46,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'suppression')
 
 if (isset($_GET['action']) && $_GET['action'] == "modification")
 {
-		$content .= "<form method='post' enctype='multipart/form-date'>";
+		/*$content .= "<form method='post' enctype='multipart/form-date'>";
 		$content .= "<input name='pseudo'>";
 		$content .= "<input name='mdp'>";
 		$content .= "<input name='nom'>";
@@ -50,13 +54,11 @@ if (isset($_GET['action']) && $_GET['action'] == "modification")
 		$content .= "<input name='email'>";
 		$content .= "<input name='telephone'>";
 		$content .= "<input name='statut'>";
-		$content .= "<button value='enregistrer'>";
+		$content .= "<button value='enregistrer'>";*/
 
 		if ($_POST)
 		{
-			$reqedit = ("UPDATE membre SET pseudo= :pseudo, mdp= :mdp, nom = :nom, prenom= :prenom, email= :email, telephone= :telephone, statut= :statut");
-
-			$prep= $pdo->prepare($reqedit);
+			$prep=$pdo->prepare("UPDATE membre SET pseudo= :pseudo, mdp= :mdp, nom = :nom, prenom= :prenom, email= :email, telephone= :telephone, statut= :statut WHERE id_membre='$_GET[id_membre]'");
 
 			$prep->bindValue(':pseudo',$_POST['pseudo'], PDO::PARAM_STR);
 			$prep->bindValue(':mdp',$_POST['mdp'], PDO::PARAM_STR);
@@ -66,7 +68,7 @@ if (isset($_GET['action']) && $_GET['action'] == "modification")
 			$prep->bindValue(':telephone',$_POST['telephone'], PDO::PARAM_STR);
 			$prep->bindValue(':statut',$_POST['statut'], PDO::PARAM_STR);
 
-			$prep= $pdo->execute($reqedit);
+			$prep->execute();
 
 			header("location:gestion_membre.php");
 		}
@@ -107,7 +109,9 @@ if (isset($_GET['action']) && $_GET['action'] == "modification")
 			<option value="0">Membre</option>
 	</select>
 
-	<button value="enregistrer" class="primary"></button>
+	<input type="submit" value="enregistrer">
+
+	<!-- <button value="enregistrer" class="primary"></button> -->
 
 
 </form>
