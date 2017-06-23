@@ -31,13 +31,10 @@ if($_POST) {
 
 	else $content .= "Erreur de pseudo";
 
-
-
 }
 
 
 ?>
-
 
 
 <form method="post">
