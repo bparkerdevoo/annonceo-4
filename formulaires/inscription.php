@@ -15,7 +15,7 @@
 			$prep->bindValue(':'.$key, $value, PDO::PARAM_STR);
 		}
 
-		//$prep->execute();
+		$prep->execute();
 
 	}
 
