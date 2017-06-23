@@ -1,7 +1,7 @@
 <?php
 require_once("../inc/init.inc.php");
 require_once("../inc/fonction.inc.php");
-//--------envoi des donner dans bdd categorie
+//--------envoi des donnees dans bdd categorie
 
 //debug($_POST);
 
