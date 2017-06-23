@@ -7,13 +7,12 @@
 <body>
 	
 	<header>
-		<div class="conteneur">
-			<a href="#" id="logo">Annon<span color:#ffab40>ceo</span></a>
+			
 			<nav>
 				<?php
 				echo "<ul>";
 				
-
+				echo '<li class="logo"><a href="#" id="logo">Annon<span color:#ffab40>ceo</span></a><li>';
 				/*if(internauteConnecteEstAdmin())
 				{ */ // BackOffice
 						echo '<li><a href="../admin/gestion_categorie.php">Gestion categories</a></li>';
@@ -34,9 +33,11 @@
 				{
 
 						echo '<li><a href="../formulaires/inscription.php">Inscription</a></li>';
-						echo '<li><a href="../formulaires/connexion.php">Connexion</a></li>';
+						
 						echo '<li><a href="#">Espace membre</a></li>';
 						echo '<li><a href="#">Accueil</a></li>';
+
+						echo '<li><a href="../formulaires/connexion.php"><img class="connexion" src="../inc/img/connexion30.jpg" ></a></li>';
 
 
 				}
@@ -46,7 +47,6 @@
 				?>
 
 			</nav>
-		</div> <!-- header/conteneur -->
 	</header>
 	
 	<section>
