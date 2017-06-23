@@ -7,18 +7,27 @@
 
 	if($_POST){
 
+		$urlPhotoPrincipale = '';
+		$urlPhotosSecondaires = array();
+
 		if($_FILES) {
 
-			foreach ($_FILES as $value) {
+			foreach ($_FILES as $key => $value) {
 				if(!empty($value['name'])) {
 
+					//debug($_FILES);
 
-					$photoName = "photos/".date("U").$value['name'];
-
-					echo $photoName;
+					if($key == "photoPrincipale") {
 
 
-					$urlPhoto = URL.$photoName;
+						$photoName = "photos/".date("U").$value['name'];
+						$urlPhotoPrincipale = URL.$photoName;
+
+
+					} else {
+						array_push($urlPhotosSecondaires, URL."photos/".date("U").$value['name']);
+					}
+
 
 
 					$photo_dossier = RACINE_SITE.$photoName;
@@ -27,8 +36,28 @@
 			}
 		}
 
+		//debug($urlPhotosSecondaires);
 
-		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, photo, pays, ville, adresse, cp, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :urlPhoto, :pays, :ville, :adresse, :cp, CURDATE())";
+		$idPhotosSecondaires;
+
+		if(!empty($urlPhotosSecondaires)) {
+
+			$requestInsertPhotos = "INSERT INTO photo (photo1, photo2, photo3, photo4, photo5) VALUES (:photo1, :photo2, :photo3, :photo4, :photo5)";
+			$prepInsertPhotos = $pdo->prepare($requestInsertPhotos);
+
+			$prepInsertPhotos->bindValue(":photo1", $urlPhotosSecondaires[0], PDO::PARAM_STR);
+			$prepInsertPhotos->bindValue(":photo2", $urlPhotosSecondaires[1], PDO::PARAM_STR);
+			$prepInsertPhotos->bindValue(":photo3", $urlPhotosSecondaires[2], PDO::PARAM_STR);
+			$prepInsertPhotos->bindValue(":photo4", $urlPhotosSecondaires[3], PDO::PARAM_STR);
+			$prepInsertPhotos->bindValue(":photo5", $urlPhotosSecondaires[4], PDO::PARAM_STR);
+
+			$prepInsertPhotos->execute();
+
+			$idPhotosSecondaires = $pdo->lastInsertId();
+		}
+
+
+		$request = "INSERT INTO annonce (titre, description_courte, description_longue, prix, photo, pays, ville, adresse, cp, id_photo, date_enregistrement) VALUES (:titre, :description_courte, :description_longue, :prix, :urlPhotoPrincipale, :pays, :ville, :adresse, :cp, :id_photo, CURDATE())";
 
 		$prep = $pdo->prepare($request);
 
@@ -36,11 +65,12 @@
 		$prep->bindValue(":description_courte", $_POST["description_courte"], PDO::PARAM_STR);
 		$prep->bindValue(":description_longue", $_POST["description_longue"], PDO::PARAM_STR);
 		$prep->bindValue(":prix", $_POST["prix"], PDO::PARAM_STR);
-		$prep->bindValue(":urlPhoto", $urlPhoto, PDO::PARAM_STR);
+		$prep->bindValue(":urlPhotoPrincipale", $urlPhotoPrincipale, PDO::PARAM_STR);
 		$prep->bindValue(":pays", $_POST["pays"], PDO::PARAM_STR);
 		$prep->bindValue(":ville", $_POST["ville"], PDO::PARAM_STR);
 		$prep->bindValue(":adresse", $_POST["adresse"], PDO::PARAM_STR);
 		$prep->bindValue(":cp", $_POST["cp"], PDO::PARAM_STR);
+		$prep->bindValue(":id_photo", $idPhotosSecondaires, PDO::PARAM_STR);
 
 		$prep->execute();
 
@@ -55,11 +85,20 @@
 		<input type="text" name="description_longue" placeholder="Description longue">
 		<input type="number" name="prix" placeholder="Prix">
 		<select name="categorie"></select>
-		<input type="file" name="photo1" placeholder="Photo 1">
-		<input type="file" name="photo2" placeholder="Photo 2">
-		<input type="file" name="photo3" placeholder="Photo 3">
-		<input type="file" name="photo4" placeholder="Photo 4">
-		<input type="file" name="photo5" placeholder="Photo 5">
+
+		<label for="photoPrincipale">Photo principale</label>
+		<input type="file" name="photoPrincipale" id="photoPrincipale">
+		<label for="photo1">Photo 1</label>
+		<input type="file" name="photo1" id="photo1">
+		<label for="photo2">Photo 2</label>
+		<input type="file" name="photo2" id="photo2">
+		<label for="photo3">Photo 3</label>
+		<input type="file" name="photo3" id="photo3">
+		<label for="photo4">Photo 4</label>
+		<input type="file" name="photo4" id="photo4">
+		<label for="photo5">Photo 5</label>
+		<input type="file" name="photo5" id="photo5">
+
 		<input type="text" name="pays" placeholder="Pays">
 		<input type="text" name="ville" placeholder="Ville">
 		<input type="text" name="adresse" placeholder="Adresse">
