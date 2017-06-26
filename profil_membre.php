@@ -182,15 +182,8 @@ for ($i=0; $i < $request4->columnCount(); $i++) {
 	$colonne= $request4->getColumnMeta($i)['name'];
 
 
-$request3=$pdo -> query("SELECT c.commentaire, n.note, n.avis 
-	FROM commentaire c, note n 
-	WHERE c.id_membre = n.id_membre2 
-	AND n.id_membre2 = " . $_SESSION["membre"]["id_membre"]);
-//debug($request3);
 
-$content.="<table><tr>";
-for ($i=0; $i < $request3->ColumnCount(); $i++) { 
-	$colonne= $request3->getColumnMeta($i)["name"];
+//debug($request3);
 
 	$content.="<th>". $colonne."</th>";
 }

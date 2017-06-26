@@ -23,33 +23,38 @@ if(isset($_GET['id_annonce'])) {
 
 	//debug($infos);
 
-	$content .= "<h1>".$infos['titre']."</h1>";
+	$content .= "<h1 class='center'>".$infos['titre']."</h1>";
 	$content .= "<div class='photoPrincipale'><img src='".$infos['photo']."'></div>";
 
-	$content .= "<h2>Description : </h2><p>".$infos['description_longue']."</p>";
-	$content .= "<h2>Prix : </h2><p>".$infos['prix']."</p>";
-	$content .= "<h2>Adresse : </h2><p>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p>";
+	$content .= "<h2 class='center'>Description : </h2><p class='margin-bottom'>".$infos['description_longue']."</p>";
+	$content .= "<h2 class='center'>Prix : </h2><p class='margin-bottom'>".$infos['prix']."€</p>";
+	$content .= "<h2 class='center'>Adresse : </h2><p class='margin-bottom'>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p>";
 
 	if(!empty($photosSecondaires)) {
+
+		$content.="<ul class='liste-images'>";
+
 		if(!empty($photosSecondaires[0]['photo1'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo1']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo1']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo2'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo2']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo2']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo3'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo3']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo3']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo4'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo4']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo4']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo5'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo5']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo5']."' class='photoSecondaire'></li>";
 		}
+
+		$content.="</ul>";
 	}
 
 	$content.= "<br>";

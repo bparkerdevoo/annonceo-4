@@ -5,7 +5,7 @@
 
 
 	if(isset($_GET['action']) && $_GET['action'] == 'supprimer') {
-		$requestDelete = "DELETE FROM annonce WHERE id_annonce = ".$_GET[id];
+		$requestDelete = "DELETE FROM annonce WHERE id_annonce = ".$_GET['id'];
 		$pdo->query($requestDelete);
 		header("location:gestion_annonces.php");
 	}
@@ -14,7 +14,7 @@
 	{
 		if($_POST) 
 		{
-			$request = "UPDATE annonce SET titre = :titre, description_courte = :description_courte, description_longue = :description_longue, prix = :prix, pays = :pays, ville = :ville, adresse = :adresse, cp = :cp WHERE id_annonce = ".$_GET[id];
+			$request = "UPDATE annonce SET titre = :titre, description_courte = :description_courte, description_longue = :description_longue, prix = :prix, pays = :pays, ville = :ville, adresse = :adresse, cp = :cp WHERE id_annonce = ".$_GET['id'];
 
 			$prep = $pdo->prepare($request);
 
@@ -33,52 +33,52 @@
 		}
 
 	//--RECUPERATION DES INFO A MODIFIER AU CLICK ICON EDIT--
-		if (isset($_GET['id_annonce']))
-		{
-			$resultat = $pdo->query("SELECT *FROM annonce WHERE id_annonce=$_GET[id]");
-			$annonce_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
+	if (isset($_GET['id'])) {
 
-		}
+		$resultat = $pdo->query("SELECT *FROM annonce WHERE id_annonce=$_GET[id]");
+		$annonce_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
 
-			$id_annonce = (isset($annonce_actuel['id_annonce']))?
-			$annonce_actuel['id_annonce'] :'';
+	}
 
-			$titre = (isset($annonce_actuel['titre']))?
-			$annonce_actuel['titre'] :'';
+	$id_annonce = (isset($annonce_actuel['id_annonce']))?
+	$annonce_actuel['id_annonce'] :'';
 
-			$description_courte = (isset($annonce_actuel['description_courte']))?
-			$annonce_actuel['description_courte'] :'';
+	$titre = (isset($annonce_actuel['titre']))?
+	$annonce_actuel['titre'] :'';
 
-			$description_longue = (isset($annonce_actuel['description_longue']))?
-			$annonce_actuel['description_longue'] :'';
+	$description_courte = (isset($annonce_actuel['description_courte']))?
+	$annonce_actuel['description_courte'] :'';
 
-			$prix = (isset($annonce_actuel['prix']))?
-			$annonce_actuel['prix'] :'';
+	$description_longue = (isset($annonce_actuel['description_longue']))?
+	$annonce_actuel['description_longue'] :'';
 
-			$pays = (isset($annonce_actuel['pays']))?
-			$annonce_actuel['pays'] :'';
+	$prix = (isset($annonce_actuel['prix']))?
+	$annonce_actuel['prix'] :'';
 
-			$ville = (isset($annonce_actuel['ville']))?
-			$annonce_actuel['ville'] :'';
+	$pays = (isset($annonce_actuel['pays']))?
+	$annonce_actuel['pays'] :'';
 
-			$adresse = (isset($annonce_actuel['adresse']))?
-			$annonce_actuel['adresse'] :'';
+	$ville = (isset($annonce_actuel['ville']))?
+	$annonce_actuel['ville'] :'';
 
-			$cp = (isset($annonce_actuel['cp']))?
-			$annonce_actuel['cp'] :'';
+	$adresse = (isset($annonce_actuel['adresse']))?
+	$annonce_actuel['adresse'] :'';
 
-	echo $content;		
+	$cp = (isset($annonce_actuel['cp']))?
+	$annonce_actuel['cp'] :'';
+	
 
-			$content .= "<form method='post' enctype='multipart/form-data'>";
-			$content .=	"<input type='text' name='titre' value='".$titre."' placeholder='Titre'>";
-			$content .=	"<input type='text' name='description_courte' value='".$description_courte."' placeholder='Description courte'>";
-			$content .=	"<input type='text' name='description_longue' value='".$description_longue."' placeholder='Description longue'>";
-			$content .= "<input type='number' name='prix' value='".$prix."' placeholder='Prix'>";
-			$content .= "<input type='text' name='pays' value='".$pays."' placeholder='Pays'>";
-			$content .= "<input type='text' name='ville' value='".$ville."' placeholder='Ville'>";
-			$content .= "<input type='text' name='adresse' value='".$adresse."' placeholder='Adresse'>";
-			$content .= "<input type='number' name='cp' value='".$cp."' placeholder='Code postal'>";
-			$content .= "<input type='submit' value=\"Ajouter l'annonce\">";
+	$content .= "<form method='post' enctype='multipart/form-data'>";
+	$content .=	"<input type='text' name='titre' value='".$titre."' placeholder='Titre'>";
+	$content .=	"<input type='text' name='description_courte' value='".$description_courte."' placeholder='Description courte'>";
+	$content .=	"<input type='text' name='description_longue' value='".$description_longue."' placeholder='Description longue'>";
+	$content .= "<input type='number' name='prix' value='".$prix."' placeholder='Prix'>";
+	$content .= "<input type='text' name='pays' value='".$pays."' placeholder='Pays'>";
+	$content .= "<input type='text' name='ville' value='".$ville."' placeholder='Ville'>";
+	$content .= "<input type='text' name='adresse' value='".$adresse."' placeholder='Adresse'>";
+	$content .= "<input type='number' name='cp' value='".$cp."' placeholder='Code postal'>";
+	$content .= "<input type='submit' value=\"Ajouter l'annonce\">";
+
 
 			
 			
