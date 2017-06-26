@@ -41,6 +41,7 @@
 		<input type="mail" name="email" placeholder="Mail">
 
 		<select name="civilite">
+
 			<option value="m" selected>Homme</option>
 			<option value="f">Femme</option>
 		</select>
