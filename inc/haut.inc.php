@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>ANNONCEO</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href=" <?php echo URL ?>inc/css/style.css">
 	
 </head>
