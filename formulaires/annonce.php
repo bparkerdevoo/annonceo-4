@@ -48,11 +48,11 @@
 
 		}
 
-		/*for ($i=0; $i < 5; $i++) { 
+		for ($i=0; $i < 5; $i++) { 
 			if(!isset($urlPhotosSecondaires[$i])) {
 				$urlPhotosSecondaires[$i] = "";
 			}
-		}*/
+		}
 
 		//debug($urlPhotosSecondaires);
 

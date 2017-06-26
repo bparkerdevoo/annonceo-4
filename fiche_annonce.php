@@ -79,6 +79,9 @@ if(isset($_GET['id_annonce'])) {
 			$prep->bindValue(":commentaire", $_POST['commentaire']);
 
 			$prep->execute();
+
+			$content.="<div class='validation'>Votre commentaire a bien été enregisté</div>";
+
 		}
 	}
 
@@ -124,6 +127,8 @@ if(isset($_GET['id_annonce'])) {
 			$prep->bindValue(":avis", $_POST['avis']);
 
 			$prep->execute();
+
+			$content.="<div class='validation'>Votre note a bien été enregistrée</div>";
 		}
 	}
 

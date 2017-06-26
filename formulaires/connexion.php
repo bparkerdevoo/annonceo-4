@@ -1,8 +1,6 @@
 <?php
 require_once("../inc/init.inc.php");
 
-
-
 if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
 {
 	unset($_SESSION['membre']);
