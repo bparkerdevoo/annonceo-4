@@ -1,8 +1,6 @@
 <?php
 require_once("../inc/init.inc.php");
 
-
-
 if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
 {
 	unset($_SESSION['membre']);
@@ -12,6 +10,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
 }
 
 require_once("../inc/haut.inc.php");
+
 if(internauteEstConnecte())
 {
 	header("location:".URL."profil_membre.php");

@@ -62,7 +62,7 @@ if (isset($_GET['action']) && $_GET['action'] == "modification")
 			header("location:gestion_membre.php");
 		}
 
-//-----------------RECUPERATION DES INFO A MODIFIER AU CLICK ICON EDIT----------
+//--RECUPERATION DES INFO A MODIFIER AU CLICK ICON EDIT--
 		if (isset($_GET['id_membre']))
 		{
 			$resultat = $pdo->query("SELECT *FROM membre WHERE id_membre=$_GET[id_membre]");
@@ -93,8 +93,7 @@ if (isset($_GET['action']) && $_GET['action'] == "modification")
 			$civilite = (isset($membre_actuel['civilite']))?
 			$membre_actuel['civilite'] :'';
 
-			/*$civilite = (isset($membre_actuel['f']))?
-			$membre_actuel['f'] :'';*/
+			
 echo '
 <form method="post" action="#" enctype="multipart/form-data">
 	<label for="pseudo">Pseudo</label>
@@ -129,7 +128,7 @@ echo '
 
 	<input type="submit" value="enregistrer">
 
-	<!-- <button value="enregistrer" class="primary"></button> -->
+	
 
 
 </form>';
