@@ -23,33 +23,39 @@ if(isset($_GET['id_annonce'])) {
 
 	//debug($infos);
 
-	$content .= "<h1>".$infos['titre']."</h1>";
+	$content .= "<h1 class='center'>".$infos['titre']."</h1>";
 	$content .= "<div class='photoPrincipale'><img src='".$infos['photo']."'></div>";
 
 	$content .= "<h4>Description : </h4><p>".$infos['description_longue']."</p><br>";
 	$content .= "<h4>Prix : </h4><p>".$infos['prix']."</p><br>";
 	$content .= "<h4>Adresse : </h4><p>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p><br>";
 
+
 	if(!empty($photosSecondaires)) {
+
+		$content.="<ul class='liste-images'>";
+
 		if(!empty($photosSecondaires[0]['photo1'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo1']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo1']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo2'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo2']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo2']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo3'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo3']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo3']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo4'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo4']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo4']."' class='photoSecondaire'></li>";
 		}
 
 		if(!empty($photosSecondaires[0]['photo5'])) {
-			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo5']."'></div>";
+			$content .= "<li><img src='".$photosSecondaires[0]['photo5']."' class='photoSecondaire'></li>";
 		}
+
+		$content.="</ul>";
 	}
 
 	$content.= "<br>";

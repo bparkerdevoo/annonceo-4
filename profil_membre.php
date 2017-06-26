@@ -150,6 +150,8 @@ $content.="<table id='tabAvis'><tr>";
 for ($i=0; $i < $request4->columnCount(); $i++) 
 { 
 	$colonne= $request4->getColumnMeta($i)['name'];
+//debug($request3);
+
 	$content.="<th>". $colonne."</th>";
 }
 
