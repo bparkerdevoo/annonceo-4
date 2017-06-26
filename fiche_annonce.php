@@ -19,36 +19,40 @@ if(isset($_GET['id_annonce'])) {
 
 	//debug($photosSecondaires);
 
-	if(!empty($photosSecondaires)) {
-		if(!empty($photosSecondaires[0]['photo1'])) {
-			$content .= "<div><img src='".$photosSecondaires[0]['photo1']."'></div>";
-		}
-
-		if(!empty($photosSecondaires[0]['photo2'])) {
-			$content .= "<div><img src='".$photosSecondaires[0]['photo2']."'></div>";
-		}
-
-		if(!empty($photosSecondaires[0]['photo3'])) {
-			$content .= "<div><img src='".$photosSecondaires[0]['photo3']."'></div>";
-		}
-
-		if(!empty($photosSecondaires[0]['photo4'])) {
-			$content .= "<div><img src='".$photosSecondaires[0]['photo4']."'></div>";
-		}
-
-		if(!empty($photosSecondaires[0]['photo5'])) {
-			$content .= "<div><img src='".$photosSecondaires[0]['photo5']."'></div>";
-		}
-	}
+	
 
 	//debug($infos);
 
 	$content .= "<h1>".$infos['titre']."</h1>";
-	$content .= "<div><img src='".$infos['photo']."'></div>";
+	$content .= "<div class='photoPrincipale'><img src='".$infos['photo']."'></div>";
 
 	$content .= "<h2>Description : </h2><p>".$infos['description_longue']."</p>";
 	$content .= "<h2>Prix : </h2><p>".$infos['prix']."</p>";
 	$content .= "<h2>Adresse : </h2><p>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p>";
+
+	if(!empty($photosSecondaires)) {
+		if(!empty($photosSecondaires[0]['photo1'])) {
+			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo1']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo2'])) {
+			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo2']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo3'])) {
+			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo3']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo4'])) {
+			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo4']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo5'])) {
+			$content .= "<div class='photoSecondaire'><img src='".$photosSecondaires[0]['photo5']."'></div>";
+		}
+	}
+
+	$content.= "<br>";
 
 	$content .= "<a href='?id_annonce=".$_GET['id_annonce']."&action=note'>Noter le vendeur</a></br>";
 
