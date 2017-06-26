@@ -96,7 +96,7 @@
 
 ?>
 
-
+	<h1>Déposer votre annonce</h1>
 	<form method="post" enctype="multipart/form-data">
 		<input type="text" name="titre" placeholder="Titre">
 		<input type="text" name="description_courte" placeholder="Description courte">

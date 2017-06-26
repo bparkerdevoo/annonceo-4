@@ -3,6 +3,21 @@ require_once("../inc/init.inc.php");
 
 require_once("../inc/haut.inc.php");
 
+if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
+{
+	unset($_SESSION['membre']);
+	//session_unset();
+	
+
+}
+
+if(internauteEstConnecte())
+{
+	header("location:".URL."espace_membre.php");
+	exit();
+}
+
+
 if($_POST) {
 
 	$request = "SELECT * FROM membre WHERE pseudo = '$_POST[pseudo]'";
@@ -17,26 +32,29 @@ if($_POST) {
 			//Connexion
 			//$_SESSION['membre']
 
+			$content .= "<div class='validation'>Connexion réussie";
+
 			foreach ($membre as $key => $value) {
 				$_SESSION['membre'][$key] = $value;
+
+				
 			}
 
-			$content .= "Connexion réussie";
-
+			header("location:".URL."profil_membre.php");
 		}
 
-		else $content .= "Erreur de mot de passe";
+		else $content .= "<div class='erreur'> Erreur de mot de passe</div>";
 
 	}
 
-	else $content .= "Erreur de pseudo";
+	else $content .= "<div class='erreur'>Erreur de pseudo</div>";
 
 }
 
 
 ?>
 
-
+<h1 class="titre">Connexion</h1>
 <form method="post">
 	<input type="text" name="pseudo" placeholder="Pseudo">
 	<input type="password" name="mdp" placeholder="Mot de passe">
