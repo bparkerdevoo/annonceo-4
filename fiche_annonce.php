@@ -26,9 +26,9 @@ if(isset($_GET['id_annonce'])) {
 	$content .= "<h1>".$infos['titre']."</h1>";
 	$content .= "<div class='photoPrincipale'><img src='".$infos['photo']."'></div>";
 
-	$content .= "<h2>Description : </h2><p>".$infos['description_longue']."</p>";
-	$content .= "<h2>Prix : </h2><p>".$infos['prix']."</p>";
-	$content .= "<h2>Adresse : </h2><p>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p>";
+	$content .= "<h4>Description : </h4><p>".$infos['description_longue']."</p><br>";
+	$content .= "<h4>Prix : </h4><p>".$infos['prix']."</p><br>";
+	$content .= "<h4>Adresse : </h4><p>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p><br>";
 
 	if(!empty($photosSecondaires)) {
 		if(!empty($photosSecondaires[0]['photo1'])) {

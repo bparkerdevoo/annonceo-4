@@ -92,7 +92,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'modification')
 
 //--------------------recuperation donnees dans les champs formulaires----------------
 	$content.="<form method='post'>";
-	$content.="<input type='text' name='pseudo' value='".$titre."' placeholder='pseudo'>";
+	$content.="<input type='text' name='pseudo' value='".$pseudo."' placeholder='pseudo'>";
 	$content.="<input type='text'  name='mdp' value='".$mdp."' placeholder='mot de passe'>";
 	$content.="<input type='text'  name='nom' value='".$nom."' placeholder='nom'>";
 	$content.="<input type='text'  name='prenom' value='".$prenom."' placeholder='prenom'>";
@@ -121,7 +121,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'modification')
 
 
 
-	if($_POST){
+	if($_POST)
+	{
 
 		$request2=$pdo->prepare("UPDATE membre SET pseudo = :pseudo, mdp = :mdp, nom=:nom, prenom = :prenom, telephone = :telephone, email = :email, civilite=:civilite WHERE id_membre =".$_GET["id_membre"]);
 
@@ -178,19 +179,9 @@ debug($infos_note);*/
 
 
 $content.="<table id='tabAvis'><tr>";
-for ($i=0; $i < $request4->columnCount(); $i++) { 
+for ($i=0; $i < $request4->columnCount(); $i++) 
+{ 
 	$colonne= $request4->getColumnMeta($i)['name'];
-
-
-$request3=$pdo -> query("SELECT c.commentaire, n.note, n.avis 
-	FROM commentaire c, note n 
-	WHERE c.id_membre = n.id_membre2 
-	AND n.id_membre2 = " . $_SESSION["membre"]["id_membre"]);
-//debug($request3);
-
-$content.="<table><tr>";
-for ($i=0; $i < $request3->ColumnCount(); $i++) { 
-	$colonne= $request3->getColumnMeta($i)["name"];
 
 	$content.="<th>". $colonne."</th>";
 }
@@ -198,11 +189,12 @@ for ($i=0; $i < $request3->ColumnCount(); $i++) {
 $content.="</tr>";
 
 
-while ($profil=$request4->fetch(PDO::FETCH_ASSOC)){
+while ($profil=$request4->fetch(PDO::FETCH_ASSOC))
+{
 	$content.="<tr>";
 	foreach ($profil as $key => $value) {
 		$content.="<td>" . $value . "</td>";
-	}
+}
 	$content.="</tr>";
 }
 
