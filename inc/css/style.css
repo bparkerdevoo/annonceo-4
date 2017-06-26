@@ -71,17 +71,6 @@ header{
 	width: 100%;
 	height: 50px;
 }
-header::after{
-	/* position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
-	border: 3px solid #ff9100;
-	border-radius: 20px;
-	content: '';
-	display: block; */
-}
 
 /*li de logo Annonceo*/
 .logo{
@@ -200,42 +189,6 @@ footer{
 .center, p{
 	text-align: center;
 }
-/*******************************BOUTIQUE*********************/
-/* .boutique-gauche{
-	float: left;
-	width: 30%;
-	background: #f2f2f2;
-	min-height: 500px;
-	margin-right: 10%;
-	padding-top: 10px;
-	text-align: center; 
-}
-.boutique-gauche ul{
-	list-style-type: none;
-	padding: 0;
-}
-.boutique-gauche ul li a{
-	display: block;
-	padding: 10px;
-}
-.boutique-gauche ul li a:hover{
-	background: #046baf6;
-	color: #fff;
-}
-.boutique-droite{
-	float: left;
-	width: 60%;
-}
-.boutique-produit{
-	float: left;
-	width: 30%
-	text-align: center;
-	padding: 5%;
-	border-bottom: 1px solid #c0c0c0;
-}
-.boutique-produit:hover{
-	background: #c0c0c0;
-} */
 /************************************FICHIER NOTES**************/
 .conteneur-notation{
 	background: #ffb74d;
@@ -251,17 +204,6 @@ footer{
 .st-color{
 	color: #ff9100;
 }
-
-/* Correctif IE6 sur min-width & min-height*/
-
-/*ul.notes-echelle li label{
-	display: block;
-	text-align: center;
-	line-height: 20px;
-	background: url(etoiles.gif) center top no repeat;
-	cursor: pointer;
-}*/
-
 
 
 /***********************TABLE*******************************/
@@ -281,12 +223,6 @@ th{
 td, th{
 	padding: 5px;
 }
-/*---------------css images tableaux gestion (sonia)--------------------------*/
-.gestion{
-	width:20px; 
-	height:20px;
-	padding-left: 5px;
-}
 
 /* Gestion des images (s'il y a un problème, se plaindre auprès de David) */
 
@@ -302,8 +238,20 @@ td, th{
 	margin: 0 20px;
 }
 
-img {
-	width: 100%;
-	display: block;
+/*---------------css images tableaux gestion (sonia)--------------------------*/
+.gestion{
+	display: inline-block;
+	width:20px; 
+	height:20px;
+	padding-left: 5px;
 }
 
+/*----------------FICHE ANNONCE (stefy)-----------*/
+.photoPrincipale img{
+	width: 200px;
+	height: 200px;
+}
+ 
+h4, p{
+	display: inline-block;
+}
