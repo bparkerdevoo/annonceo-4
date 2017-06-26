@@ -5,6 +5,16 @@ body{
 	
 	background-color: #efebe9;
 }
+
+.titre{
+	font-weight: 100px;
+	color:#222;
+	width: 100%;
+	margin: 50px auto;
+	text-align: center;
+
+
+}
 a{
 	text-decoration: none;
 	color: #795548;
@@ -45,9 +55,6 @@ input[type="submit"]{
 input[type="file"]{
 	border: none;
 }
-h1, label{
-	color: blue;
-}
 
 /*********************************HAUT*****************/
 .conteneur{
@@ -63,6 +70,7 @@ header{
 	width: 100%;
 	height: 50px;
 }
+<<<<<<< HEAD
 header::after{
 	/* position: absolute;
 	top: 0px;
@@ -74,6 +82,8 @@ header::after{
 	content: '';
 	display: block; */
 }
+=======
+>>>>>>> master
 /*li de logo Annonceo*/
 .logo{
 	display: inline-block;
@@ -99,6 +109,9 @@ header nav{
 	height: 50px;
 	line-height: 50px;  /*pour centrer le text*/  
 }
+header nav ul{
+	margin:0;
+}
 /*modif header*/
 header ul{
 	height: 50px;
@@ -119,9 +132,7 @@ header ul li{
 	border-left: 1px solid #fff;
 	text-align: center;
 }
-header ul li:nth-child(2){
-	border:none;
-}
+
 
 .connexion{
 	padding-left: 40px;
@@ -143,10 +154,16 @@ header nav a:hover{
 }
 
 /*-------------css image de connexion sur la nav-----------*/
+
+
 .connexion{
 	width:50px; 
 	height:50px;
 	display: block;
+	border-radius: 100%;
+	position: absolute;
+	top:-30px;
+	left: 0px;
 
 
 }
@@ -171,13 +188,14 @@ footer{
 .erreur{
 	background: #ff0000;
 	padding: 5px;
-	margin: 5px;
+	margin: 20px;
 	color: #fff;
+
 }
 .validation{
 	background: #669933;
 	padding: 5px;
-	margin: 5px;
+	margin: 20px;
 
 }
 .cadre{

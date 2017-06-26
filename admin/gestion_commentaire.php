@@ -23,7 +23,7 @@ while ($commentaire=$req1->fetch(PDO::FETCH_ASSOC)){
 		$content.="<td>" . $value . "</td>";
 	}
 
-		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/delete.png'></a>";
+		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"OnClick='return(confirm(\"En êtes-vous sûr ?\"));'><img class='gestion' src='../inc/img/delete.png'></a>";
 
 		$content.="<a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img class='gestion'  src='../inc/img/edit.png'></a>";
 			
