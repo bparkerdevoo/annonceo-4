@@ -59,19 +59,39 @@ $content .='</tr></table>';
 if(isset($_GET['action']) && $_GET['action'] == 'modification'){
 
 	$content.="<form method='post'>";
-	$content.="<input type='text' name='pseudo' placeholder='pseudo'>";
-	$content.="<input type='text'  name='mdp' placeholder='mot de passe'>";
-	$content.="<input type='text'  name='nom' placeholder='nom'>";
-	$content.="<input type='text'  name='prenom' placeholder='prenom'>";
-	$content.="<input type='text'  name='telephone' placeholder='téléphone'>";
-	$content.="<input type='text'  name='email' placeholder='email'>";
-	$content.="<select name='civilite'><option value='m' selected>M</option><option value='f'>F</option>";
+	$content.="<input type='text' name='pseudo' value='".$pseudo."' placeholder='pseudo'>";
+	$content.="<input type='text'  name='mdp' value='".$mdp."' placeholder='mot de passe'>";
+	$content.="<input type='text'  name='nom' value='".$nom."' placeholder='nom'>";
+	$content.="<input type='text'  name='prenom' value='".$prenom."' placeholder='prenom'>";
+	$content.="<input type='text'  name='telephone' value='".$telephone."' placeholder='téléphone'>";
+	$content.="<input type='text'  name='email' value='".$email."' placeholder='email'>";
+	$content.="<select name='civilite'>";
+
+	$content.= "<option name='civilite' value='m'";
+	if($civilite == "m") 
+	{
+		$content.='selected';
+	}
+	$content.=">M</option>";
+
+	$content.= "<option name='civilite' value='f'";
+	if($civilite == "f") 
+	{
+		$content.='selected';
+	}
+	$content.=">F</option>";
+
+	$content.="</select>";
+
 	$content.="<input type='submit' value='envoyer'></form>";
 
 	//debug($_SESSION);
 
 
-	if($_POST){
+
+	if($_POST)
+	{
+
 
 		$request2=$pdo->prepare("UPDATE membre SET pseudo = :pseudo, mdp = :mdp, nom=:nom, prenom = :prenom, telephone = :telephone, email = :email, civilite=:civilite WHERE id_membre =".$_GET['id_membre']);
 
@@ -127,7 +147,8 @@ debug($infos_note);*/
 
 
 $content.="<table id='tabAvis'><tr>";
-for ($i=0; $i < $request4->columnCount(); $i++) { 
+for ($i=0; $i < $request4->columnCount(); $i++) 
+{ 
 	$colonne= $request4->getColumnMeta($i)['name'];
 	$content.="<th>". $colonne."</th>";
 }
@@ -135,11 +156,12 @@ for ($i=0; $i < $request4->columnCount(); $i++) {
 $content.="</tr>";
 
 
-while ($profil=$request4->fetch(PDO::FETCH_ASSOC)){
+while ($profil=$request4->fetch(PDO::FETCH_ASSOC))
+{
 	$content.="<tr>";
 	foreach ($profil as $key => $value) {
 		$content.="<td>" . $value . "</td>";
-	}
+}
 	$content.="</tr>";
 }
 
