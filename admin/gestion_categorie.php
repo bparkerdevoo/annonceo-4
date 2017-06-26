@@ -1,6 +1,8 @@
 <?php
 require_once("../inc/init.inc.php");
 require_once("../inc/fonction.inc.php");
+
+
 //--------envoi des donnees dans bdd categorie
 
 //debug($_POST);
@@ -40,12 +42,11 @@ $content.="<table class='tableau';><tr>";
 			$content.="<td>". $value . "</td>";
 		}
 
-		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/delete.png'></a>";
+		$content.="<td><a href=\"?action=supprimer&id_categorie=".$categorie['id_categorie']."\"OnClick='return(confirm(\"En êtes-vous sûr ?\"));'><img class='gestion' src='../inc/img/delete.png'></a>";
 
 		$content.="<a href=\"?action=modifier&id_categorie=".$categorie['id_categorie']."\"><img class='gestion'  src='../inc/img/edit.png'></a>";
 			
 		$content.="<a href=\"?action=detail&id_categorie=".$categorie['id_categorie']."\"><img class='gestion' src='../inc/img/loupe.png'></a></td>";
-
 
 
 		$content.="</tr>";

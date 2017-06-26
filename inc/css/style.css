@@ -5,6 +5,16 @@ body{
 	
 	background-color: #efebe9;
 }
+
+.titre{
+	font-weight: 100px;
+	color:#222;
+	width: 100%;
+	margin: 10px auto;
+	text-align: center;
+
+
+}
 a{
 	text-decoration: none;
 	color: #795548;
@@ -37,16 +47,13 @@ input[type="submit"]{
 	line-height: 30px;
 	margin-top: 10px;
 	border:none;
-	width: 60px;
+	width:auto;
 	text-align: center;
 
 }
 
 input[type="file"]{
 	border: none;
-}
-h1, label{
-	color: blue;
 }
 
 /*********************************HAUT*****************/
@@ -57,6 +64,7 @@ h1, label{
 header{
 	background: #000;
 	color: #fff;
+	margin: 0;
 	/* height: 60px; */
 }
 /*li de logo*/
@@ -82,11 +90,14 @@ header nav{
 	/* margin-left: 60%;
 	display: inline-block; */
 	/*float: right;*/
-	line-height: 60px;
+	line-height: 40px;
 	margin:0;
 	/*height: 60px;*/
 	     
 
+}
+header nav ul{
+	margin:0;
 }
 /*modif header*/
 header ul li{
@@ -98,10 +109,11 @@ header ul li{
 	margin-right: 15px;
 	border-left: 1px solid #fff;
 	text-align: center;
+	position: relative;
 
 }
 
-header ul li:nth-child(2){
+header ul li:last-child{
 	border:none;
 }
 
@@ -116,10 +128,16 @@ header nav a:hover{
 }
 
 /*-------------css image de connexion sur la nav-----------*/
+
+
 .connexion{
 	width:40px; 
 	height:40px;
 	display: block;
+	border-radius: 100%;
+	position: absolute;
+	top:-30px;
+	left: 0px;
 
 
 }
@@ -145,6 +163,7 @@ footer{
 	padding: 5px;
 	margin: 5px;
 	color: #fff;
+
 }
 .validation{
 	background: #669933;

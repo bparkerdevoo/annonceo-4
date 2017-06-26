@@ -1,16 +1,7 @@
-<? php
-require_once(../inc/init.inc.php);
-require_once(../inc/haut.inc.php);
+<?php
+require_once("../inc/init.inc.php");
+require_once("../inc/haut.inc.php");
 
-
-
-
-
-
-
-
-
-require_once(../inc/bas.inc.php);
 ?>
 
 <ul class="notes-echelle">
@@ -40,3 +31,9 @@ require_once(../inc/bas.inc.php);
 	</li>		
 
 </ul>
+
+
+<?php
+require_once("../inc/bas.inc.php");
+
+?>
