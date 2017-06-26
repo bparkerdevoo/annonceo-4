@@ -3,7 +3,7 @@
 
 
 
-function debug($var,$mode = 1)
+function debug($var,$mode)
 
 {
 //la fonction debug_backtrace() renvoie le fichier dans lequel nous l'executons ainsi que le numero de la ligne	

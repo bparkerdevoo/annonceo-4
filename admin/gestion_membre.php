@@ -46,17 +46,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'suppression')
 
 if (isset($_GET['action']) && $_GET['action'] == "modification")
 {
-		/*$content .= "<form method='post' enctype='multipart/form-date'>";
-		$content .= "<input name='pseudo'>";
-		$content .= "<input name='mdp'>";
-		$content .= "<input name='nom'>";
-		$content .= "<input name='prenom'>";
-		$content .= "<input name='email'>";
-		$content .= "<input name='telephone'>";
-		$content .= "<input name='statut'>";
-		$content .= "<button value='enregistrer'>";*/
-
-		if ($_POST)
+	if ($_POST)
 		{
 			$prep=$pdo->prepare("UPDATE membre SET pseudo= :pseudo, mdp= :mdp, nom = :nom, prenom= :prenom, email= :email, telephone= :telephone, statut= :statut WHERE id_membre='$_GET[id_membre]'");
 

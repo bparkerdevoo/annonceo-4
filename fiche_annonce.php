@@ -20,7 +20,7 @@ if(isset($_GET['id_annonce'])) {
 	$content .= "<h2>Prix : </h2><p>".$infos['prix']."</p>";
 	$content .= "<h2>Adresse : </h2><p>".$infos['adresse'].", ".$infos['cp'].", ".$infos['ville']."</p>";
 
-	$content .= "<a href='#'>Déposer un commentaire ou une note</a></br>";
+	$content .= "<a href='/admin/gestion_notes.php'>Déposer un commentaire ou une note</a></br>";
 
 	$content .= "<a href='#'>Retour vers les annonces</a>";
 

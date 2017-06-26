@@ -20,7 +20,7 @@ form{
 input, textarea, select{
 	display: block;
 	border-radius: 5px;
-	border: 1px solid #ffab40;
+	border: 1px solid #ff9100;
 	margin-bottom: 10px;
 	width: 50%;
 
@@ -37,7 +37,7 @@ input[type="submit"]{
 	line-height: 30px;
 	margin-top: 10px;
 	border:none;
-	width: 60px;
+	width: auto;
 	text-align: center;
 
 }
@@ -57,13 +57,29 @@ h1, label{
 header{
 	background: #000;
 	color: #fff;
-	/* height: 60px; */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
 }
-/*li de logo*/
+header::after{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	border: 3px solid #ff9100;
+	/*border-radius: 20px;*/
+	content: '';
+	display: block;
+}
+/*li de logo Annonceo*/
 .logo{
 	display: inline-block;
 	list-style-type: none;
 	border:none;
+	/*line-height: 50px;*/
 	
 }
 
@@ -71,41 +87,52 @@ header{
 	margin-left: 5%;
 	font-size: 30px;
 	color: #fff;
-	height: 60px;
-	line-height: 60px;
+	height: 50px;
+	line-height: 50px; /*pour centrer text*/
 	text-align: right;
 }
 #logo span{
-	color: #ffab40;
+	color: #ff9100;
 }
 header nav{
-	/* margin-left: 60%;
-	display: inline-block; */
-	/*float: right;*/
-	line-height: 60px;
 	margin:0;
-	/*height: 60px;*/
-	     
-
+	height: 50px;
+	line-height: 50px;  /*pour centrer le text*/  
 }
 /*modif header*/
+header ul{
+	height: 50px;
+	display: flex;
+	-webkit-flex;
+	-moz-flex;
+	justify-content: space-around;
+	/*align-content: space-between;*/
+	/*vertical-align: center;*/
+	/*line-height: 50px;*/
+}
 header ul li{
 	display: inline-block;
+	width: 100%;
+	height: 100%;
 	list-style-type: none;
-	/*height: 60px;*/
-	line-height: 40px;
 	color: #fff;
-	margin-right: 15px;
 	border-left: 1px solid #fff;
 	text-align: center;
-
 }
-
 header ul li:nth-child(2){
 	border:none;
 }
 
+.connexion{
+	padding-left: 40px;
+	padding-right: 40px;
 
+	/*border-radius: 50px;*/
+	/*text-align: center;*/
+}
+#logo_connexion{
+	width: auto;
+}
 header nav a{
 	color: #fff;
 	text-decoration: none;
@@ -117,8 +144,8 @@ header nav a:hover{
 
 /*-------------css image de connexion sur la nav-----------*/
 .connexion{
-	width:40px; 
-	height:40px;
+	width:50px; 
+	height:50px;
 	display: block;
 
 
@@ -137,6 +164,7 @@ footer{
 	padding: 7px 0;
 	height: 20px;
 	line-height: 20px;
+	border: 2px solid #ff9100;
 }
 
 /******************************	ALERT*****************/
@@ -203,35 +231,38 @@ footer{
 	background: #c0c0c0;
 } */
 /************************************FICHIER NOTES**************/
-ul.notes-echelle{
-	margin: 0;
-	padding: 0;
-	font:.75e/1.2 Arial, Helvetica, sans-serif;
+.conteneur-notation{
+	background: #ffb74d;
 }
-ul.notes-echelle li{
-	float: left;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	min-width: 20px;
-	max-height: 20px;
+#form-notes{
+	margin-top: 5%;
+	margin-left: 50%;
+	
 }
+#clear_star{
+	color: #ff9100;
+}
+.st-color{
+	color: #ff9100;
+}
+
 /* Correctif IE6 sur min-width & min-height*/
 
-ul.notes-echelle li label{
+/*ul.notes-echelle li label{
 	display: block;
 	text-align: center;
 	line-height: 20px;
 	background: url(etoiles.gif) center top no repeat;
 	cursor: pointer;
-}
+}*/
 
 
 
 /***********************TABLE*******************************/
 table{
-	border: solid 1px #ffab40;
-	margin: 10px auto;
+	position: relative;
+	border: solid 2px #ff9100;
+	margin: 5% auto;
 	
 }
 table tr td{
