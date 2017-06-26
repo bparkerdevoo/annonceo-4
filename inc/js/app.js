@@ -3,8 +3,8 @@ $(document).ready(function(){
 
 //------------------ Notation-------------------
   
-  var srcIn='../inc/img/star_in.gif'; //image au survol
-  var srcOut='../inc/img/star_out.gif'; // image non survolée
+  var srcIn='inc/img/star_in.gif'; //image au survol
+  var srcOut='inc/img/star_out.gif'; // image non survolée
 
   // Obtenir id numérique des étoiles au format star_numero
   function idNum(id)
@@ -32,4 +32,5 @@ $(document).ready(function(){
     $('.star').attr({src:srcOut});
     $('#note').attr({value:'0'});
   },function(){});
+
 });
