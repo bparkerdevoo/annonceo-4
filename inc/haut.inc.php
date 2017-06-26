@@ -2,10 +2,8 @@
 <html>
 <head>
 	<title>ANNONCEO</title>
-	<link rel="stylesheet" type="text/css" href="../inc/css/style.css">
-	<script type="text/javascript" src="../inc/js/cdnJquery.js"></script>
-	<script type="text/javascript" src="../inc/js/app.js"></script>
-</head>
+	<link rel="stylesheet" type="text/css" href=" <?php echo URL?>inc/css/style.css">
+	</head>
 <body>
 	
 	<header>
@@ -19,7 +17,7 @@
 				if(internauteConnecteEstAdmin())
 				{ // BackOffice
 						echo '<li><a href="'. URL .'admin/gestion_categorie.php">Gestion categories</a></li>';
-						echo '<li><a href="../admin/gestion_annonces.php">Gestion annonces</a></li>';
+						echo '<li><a href="'. URL .'admin/gestion_annonces.php">Gestion annonces</a></li>';
 						echo '<li><a href="'. URL .'admin/gestion_membre.php">Gestion membres</a></li>';
 						echo'<li><a href="'. URL .'admin/gestion_notes.php">Gestion notes</a></li>';
 						echo '<li><a href="'. URL .'admin/gestion_commentaire.php">Gestion commentaires</a></li>';
@@ -32,8 +30,7 @@
 						echo '<li><a href="'. URL .'formulaires/annonce.php">Ajouter une annonce</a></li>';
 						echo '<li><a href="'. URL .'/formulaires/connexion.php?action=deconnecter">Déconnexion</a></li>';
 						
-
-						echo '<li><a href="#">Statistique</a></li>';
+					
 				}
 				else // visiteur
 				{
@@ -58,4 +55,5 @@
 		<div class="conteneur">
 			
 
-		
+	
+
