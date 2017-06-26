@@ -11,7 +11,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
 
 require_once("../inc/haut.inc.php");
 
-
 if(internauteEstConnecte())
 {
 	header("location:".URL."profil_membre.php");

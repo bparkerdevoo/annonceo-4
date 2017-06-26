@@ -154,6 +154,34 @@ if(isset($_GET['action']) && $_GET['action'] == 'modification')
 $content .= "<div><p> Vos annonces</p></div>";
 
 
+//--------------------------------note et avis--------------------------------------------
+$request4=$pdo->query("SELECT note, avis FROM note WHERE id_membre2 =". $_SESSION['membre']['id_membre']);
+/*$request3=$pdo -> query("
+	SELECT c.commentaire, n.note, n.avis 
+	FROM commentaire c
+	LEFT JOIN annonce a ON a.id_annonce = c.id_annonce
+	LEFT JOIN note n ON n.id_membre2 = a.id_membre
+	AND n.id_membre2 = " . $_SESSION['membre']['id_membre']);
+
+$infos_note = $request3 -> fetchAll(PDO::FETCH_ASSOC);
+
+debug($infos_note);*/
+
+//debug($request3->fetch(PDO::FETCH_ASSOC));
+
+/*$request4=$pdo->query("
+	SELECT n.note, n.avis ,a.titre 
+	FROM note n, annonce a
+	WHERE n.id_membre2 = a.id_membre
+	AND n.id_membre2 =". $_SESSION['membre']['id_membre']
+	);*/
+
+
+$content.="<table id='tabAvis'><tr>";
+for ($i=0; $i < $request4->columnCount(); $i++) { 
+	$colonne= $request4->getColumnMeta($i)['name'];
+
+
 $request3=$pdo -> query("SELECT c.commentaire, n.note, n.avis 
 	FROM commentaire c, note n 
 	WHERE c.id_membre = n.id_membre2 
@@ -163,21 +191,50 @@ $request3=$pdo -> query("SELECT c.commentaire, n.note, n.avis
 $content.="<table><tr>";
 for ($i=0; $i < $request3->ColumnCount(); $i++) { 
 	$colonne= $request3->getColumnMeta($i)["name"];
+
 	$content.="<th>". $colonne."</th>";
 }
 
 $content.="</tr>";
 
-$content.="<tr>";
-while ($profil=$request3->fetch(PDO::FETCH_ASSOC)){
-	
+
+while ($profil=$request4->fetch(PDO::FETCH_ASSOC)){
+	$content.="<tr>";
 	foreach ($profil as $key => $value) {
 		$content.="<td>" . $value . "</td>";
 	}
+	$content.="</tr>";
 }
 
-$content.="</tr></table>";
+$content.="</table>";
 
+
+//------------------commentaire-------------------------------
+
+$request5=$pdo->query("
+	SELECT a.titre,c.commentaire
+	FROM commentaire c, annonce a
+	WHERE c.id_annonce = a.id_annonce
+	AND a.id_membre =". $_SESSION['membre']['id_membre']);
+
+$content.="<table id='tabComm'><tr>";
+for ($i=0; $i < $request5->columnCount(); $i++) { 
+	$colonne= $request5->getColumnMeta($i)['name'];
+	$content.="<th>". $colonne."</th>";
+}
+
+$content.="</tr>";
+
+
+while ($profil=$request5->fetch(PDO::FETCH_ASSOC)){
+	$content.="<tr>";
+	foreach ($profil as $key => $value) {
+		$content.="<td>" . $value . "</td>";
+	}
+	$content.="</tr>";
+}
+
+$content.="</table>";
 
 
 echo $content;
