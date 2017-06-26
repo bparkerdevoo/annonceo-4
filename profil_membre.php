@@ -91,7 +91,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'modification'){
 
 
 		$request2->execute();
-
+		$content.="<div class='validation'>Vos modifications ont été pris en compte. Veuillez vous reconnecter pour voir les changements effectifs</div>";
 		debug($_POST);
 
 		/*$request2=$pdo->query("UPDATE membre SET pseudo = $_POST[pseudo], mdp = $_POST[mdp], nom=$_POST[nom], prenom = $_POST[prenom], telephone = $_POST[telephone], email = $_POST[email], civilite=$_POST[civilite] WHERE id_membre =".$_GET['id_membre']);*/
@@ -103,6 +103,30 @@ if(isset($_GET['action']) && $_GET['action'] == 'modification'){
 
 $content .= '<div><p> Vos annonces</p></div>';
 
+
+$request3=$pdo -> query("SELECT c.commentaire, n.note, n.avis 
+	FROM commentaire c, note n 
+	WHERE c.id_membre = n.id_membre2 
+	AND n.id_membre2 = " . $_SESSION['membre']['id_membre']);
+//debug($request3);
+
+$content.="<table><tr>";
+for ($i=0; $i < $request3->ColumnCount(); $i++) { 
+	$colonne= $request3->getColumnMeta($i)['name'];
+	$content.="<th>". $colonne."</th>";
+}
+
+$content.="</tr>";
+
+$content.="<tr>";
+while ($profil=$request3->fetch(PDO::FETCH_ASSOC)){
+	
+	foreach ($profil as $key => $value) {
+		$content.="<td>" . $value . "</td>";
+	}
+}
+
+$content.="</tr></table>";
 
 
 

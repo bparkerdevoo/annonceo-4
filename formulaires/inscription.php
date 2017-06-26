@@ -30,7 +30,7 @@
 	echo $content;
 
 ?>
-	<h1>Inscription</h1>
+	<h1 class="titre">Inscription</h1>
 
 	<form method="post">
 		<input type="text" name="pseudo" placeholder="Pseudo">

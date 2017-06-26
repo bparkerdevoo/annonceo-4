@@ -4,6 +4,7 @@
 	<title>ANNONCEO</title>
 	<link rel="stylesheet" type="text/css" href=" <?php echo URL?>inc/css/style.css">
 	</head>
+
 <body>
 	
 	<header>
@@ -28,18 +29,17 @@
 				{
 						echo '<li><a href="'.URL.'profil_membre.php">Votre profil</a></li>';
 						echo '<li><a href="'. URL .'formulaires/annonce.php">Ajouter une annonce</a></li>';
-						echo '<li><a href="'. URL .'/formulaires/connexion.php?action=deconnecter">Déconnexion</a></li>';
+						echo '<li><a href="'. URL .'formulaires/connexion.php?action=deconnecter">Déconnexion</a></li>';
 						
-					
 				}
 				else // visiteur
 				{
 
-						echo '<li><a href="' . URL .'/formulaires/inscription.php">Inscription</a></li>';
+						echo '<li><a href="' . URL .'formulaires/inscription.php">Inscription</a></li>';
 						
 						echo '<li><a href="'.URL.'profil_membre.php">Espace membre</a></li>';
 
-						echo '<li id="logo_connexion"><a href="'. URL .'/formulaires/connexion.php"><img class="connexion" src="../inc/img/logoblacknwhite.png" ></a></li>';
+						echo '<li id="logo_connexion"><a href="'. URL .'formulaires/connexion.php"><img class="connexion" src="../inc/img/logoblacknwhite.png" ></a></li>';
 
 
 				}

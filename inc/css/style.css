@@ -10,7 +10,7 @@ body{
 	font-weight: 100px;
 	color:#222;
 	width: 100%;
-	margin: 10px auto;
+	margin: 50px auto;
 	text-align: center;
 
 
@@ -118,9 +118,7 @@ header ul li{
 	border-left: 1px solid #fff;
 	text-align: center;
 }
-header ul li:nth-child(2){
-	border:none;
-}
+
 
 .connexion{
 	padding-left: 40px;
@@ -176,14 +174,14 @@ footer{
 .erreur{
 	background: #ff0000;
 	padding: 5px;
-	margin: 5px;
+	margin: 20px;
 	color: #fff;
 
 }
 .validation{
 	background: #669933;
 	padding: 5px;
-	margin: 5px;
+	margin: 20px;
 
 }
 .cadre{
