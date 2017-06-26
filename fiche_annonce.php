@@ -11,6 +11,36 @@ if(isset($_GET['id_annonce'])) {
 
 	$infos = $result->fetch(PDO::FETCH_ASSOC);
 
+	$requestPhotos = "SELECT * FROM photo WHERE id_photo IN (SELECT id_photo FROM annonce WHERE id_annonce = ".$_GET['id_annonce'].")";
+
+	$resultPhotos = $pdo->query($requestPhotos);
+
+	$photosSecondaires = $resultPhotos->fetchAll(PDO::FETCH_ASSOC);
+
+	//debug($photosSecondaires);
+
+	if(!empty($photosSecondaires)) {
+		if(!empty($photosSecondaires[0]['photo1'])) {
+			$content .= "<div><img src='".$photosSecondaires[0]['photo1']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo2'])) {
+			$content .= "<div><img src='".$photosSecondaires[0]['photo2']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo3'])) {
+			$content .= "<div><img src='".$photosSecondaires[0]['photo3']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo4'])) {
+			$content .= "<div><img src='".$photosSecondaires[0]['photo4']."'></div>";
+		}
+
+		if(!empty($photosSecondaires[0]['photo5'])) {
+			$content .= "<div><img src='".$photosSecondaires[0]['photo5']."'></div>";
+		}
+	}
+
 	//debug($infos);
 
 	$content .= "<h1>".$infos['titre']."</h1>";

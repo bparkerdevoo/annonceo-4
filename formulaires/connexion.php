@@ -1,7 +1,7 @@
 <?php
 require_once("../inc/init.inc.php");
 
-require_once("../inc/haut.inc.php");
+
 
 if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
 {
@@ -11,9 +11,11 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnecter')
 
 }
 
+require_once("../inc/haut.inc.php");
+
 if(internauteEstConnecte())
 {
-	header("location:".URL."espace_membre.php");
+	header("location:".URL."profil_membre.php");
 	exit();
 }
 
