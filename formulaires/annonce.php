@@ -11,7 +11,7 @@
 
 	$infoscategories = $resultCategories->fetchAll(PDO::FETCH_ASSOC);
 
-	//debug($infoscategories);
+	//debug($infoscategories); 
 
 	if($_POST){
 
@@ -20,21 +20,24 @@
 
 		if($_FILES) {
 
+			//debug($_FILES);
+
 			foreach ($_FILES as $key => $value) {
 				if(!empty($value['name'])) {
 
+					$photoName = "photos/".date("U").$value['name'];
 					
 
 					if($key == "photoPrincipale") {
 
 
-						$photoName = "photos/".date("U").$value['name'];
+						
 						$urlPhotoPrincipale = URL.$photoName;
 
 
 					} else {
 						array_push($urlPhotosSecondaires, URL."photos/".date("U").$value['name']);
-					}
+					} 
 
 
 
