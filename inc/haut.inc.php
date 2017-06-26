@@ -2,15 +2,10 @@
 <html>
 <head>
 	<title>ANNONCEO</title>
-<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href=" <?php echo URL ?>inc/css/style.css">
 	
 </head>
-=======
-	<link rel="stylesheet" type="text/css" href=" <?php echo URL?>inc/css/style.css">
-	</head>
 
->>>>>>> master
 <body>
 	
 	<header>
@@ -45,11 +40,8 @@
 						
 						echo '<li><a href="'.URL.'profil_membre.php">Espace membre</a></li>';
 
-<<<<<<< HEAD
+
 						echo '<li id="logo_connexion"><a href="'. URL .'formulaires/connexion.php"><img class="connexion" src="'.URL.'inc/img/logoblacknwhite.png" ></a></li>';
-=======
-						echo '<li id="logo_connexion"><a href="'. URL .'formulaires/connexion.php"><img class="connexion" src="../inc/img/logoblacknwhite.png" ></a></li>';
->>>>>>> master
 
 
 				}
