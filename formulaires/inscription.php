@@ -30,7 +30,7 @@
 		<input type="text" name="telephone" placeholder="Téléphone">
 		<input type="mail" name="email" placeholder="Mail">
 		<select name="civilite">
-			<option value="h">Homme</option>
+			<option value="m">Homme</option>
 			<option value="f">Femme</option>
 		</select>
 		<input type="submit" value="Inscription">
