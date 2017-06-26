@@ -2,9 +2,8 @@
 <html>
 <head>
 	<title>ANNONCEO</title>
-	<link rel="stylesheet" type="text/css" href="../inc/css/style.css">
-	<script type="text/javascript" src="../inc/js/cdnJquery.js"></script>
-	<script type="text/javascript" src="../inc/js/app.js"></script>
+	<link rel="stylesheet" type="text/css" href=" <?php echo URL ?>inc/css/style.css">
+	
 </head>
 <body>
 	
@@ -34,11 +33,11 @@
 				else // visiteur
 				{
 
-						echo '<li><a href="' . URL .'/formulaires/inscription.php">Inscription</a></li>';
+						echo '<li><a href="' . URL .'formulaires/inscription.php">Inscription</a></li>';
 						
 						echo '<li><a href="#">Espace membre</a></li>';
 
-						echo '<li id="logo_connexion"><a href="'. URL .'/formulaires/connexion.php"><img class="connexion" src="../inc/img/logoblacknwhite.png" ></a></li>';
+						echo '<li id="logo_connexion"><a href="'. URL .'formulaires/connexion.php"><img class="connexion" src="'.URL.'inc/img/logoblacknwhite.png" ></a></li>';
 
 
 				}

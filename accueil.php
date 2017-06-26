@@ -4,7 +4,7 @@ require_once("/inc/init.inc.php");
 
 require_once("/inc/haut.inc.php");
 
-$nombreAnnoncesAffichees = 7;
+$nombreAnnoncesAffichees = 20;
 
 $request = "SELECT * FROM annonce LIMIT 0, ".$nombreAnnoncesAffichees;
 $result = $pdo->query($request);

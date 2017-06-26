@@ -64,15 +64,15 @@ header{
 	height: 50px;
 }
 header::after{
-	position: absolute;
+	/* position: absolute;
 	top: 0px;
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
 	border: 3px solid #ff9100;
-	/*border-radius: 20px;*/
+	border-radius: 20px;
 	content: '';
-	display: block;
+	display: block; */
 }
 /*li de logo Annonceo*/
 .logo{
